@@ -1,21 +1,21 @@
 package com.example.quarantime;
 
 public class User {
-    private int userID;
+    private int UserID;
     private String username;
     private int password_hash;
 
     public User() {}
     public User(int id, String username, int password_hash) {
-        this.userID = id;
+        this.UserID = id;
         this.username = username;
         this.password_hash = password_hash;
     }
     public void setID(int id) {
-        this.userID = id;
+        this.UserID = id;
     }
     public int getID() {
-        return this.userID;
+        return this.UserID;
     }
     public int getPassHash() {
         return this.password_hash;

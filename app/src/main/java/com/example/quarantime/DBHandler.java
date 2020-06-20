@@ -21,7 +21,7 @@ public class DBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + COLUMN_ID +
-                "INTEGER PRIMARYKEY," + COLUMN_NAME + "TEXT," + COLUMN_PASSWORD + "INTEGER)";
+                " INTEGER PRIMARY KEY," + COLUMN_NAME + " TEXT," + COLUMN_PASSWORD + " INTEGER)";
         db.execSQL(CREATE_TABLE);
     }
     @Override

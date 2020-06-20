@@ -1,6 +1,7 @@
 package com.example.quarantime;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -33,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void addUser(View view) {
+        //Debug
+        Log.d("addUser", "Added");
+
+
         //Get username and password variables
         EditText username   = (EditText)findViewById(R.id.username);
         EditText userpassword   = (EditText)findViewById(R.id.username);
@@ -42,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         id++;
         String name = username.getText().toString();
         int password_hash = (userpassword.getText().toString()).hashCode();
+        Log.d("loadUsers", "Name:" + name + "  Password:"+password_hash);
         User user = new User(id, name, password_hash);
         dbHandler.addHandler(user);
         username.setText("");
@@ -50,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void loadUsers(View view) {
+        //Debug
+        Log.d("loadUsers", "Loaded");
+
         //Get username and password variables
         EditText username   = (EditText)findViewById(R.id.username);
         EditText userpassword   = (EditText)findViewById(R.id.username);
@@ -59,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         show.setText(dbHandler.loadHandler());
         username.setText("");
         userpassword.setText("");
+
     }
 
 }
