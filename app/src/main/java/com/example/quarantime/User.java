@@ -6,10 +6,10 @@ public class User {
     private int password_hash;
 
     public User() {}
-    public User(int id, String username, String password) {
+    public User(int id, String username, int password_hash) {
         this.userID = id;
         this.username = username;
-        password_hash = password.hashCode();
+        this.password_hash = password_hash;
     }
     public void setID(int id) {
         this.userID = id;
