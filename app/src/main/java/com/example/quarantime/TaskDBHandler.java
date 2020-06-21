@@ -54,8 +54,12 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, task.getID());
         values.put(COLUMN_NAME, task.getName());
-        values.put(COLUMN_DESC, task.getDescription());
-        values.put(COLUMN_DESC, task.getDescription());
+        values.put(COLUMN_DESC, task.getDesc());
+        values.put(COLUMN_TIME, task.getStringTime());
+        values.put(COLUMN_STATUS, task.getStatus());
+        values.put(COLUMN_REMIND, task.getReminder());
+        values.put(COLUMN_CATEGORY, task.getCategory());
+        values.put(COLUMN_SCORE, task.getScore());
         SQLiteDatabase db = this.getWritableDatabase();
         db.insert(TABLE_NAME, null, values);
         db.close();
@@ -78,7 +82,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         return user;
     }
 
-    //WHy does it need to make a User user?
+    //Why does it need to make a User user?
     public boolean deleteHandler(int ID) {
         boolean result = false;
         String query = "Select * FROM" + TABLE_NAME + "WHERE" + COLUMN_ID + " = " + String.valueOf(ID) + "'";
