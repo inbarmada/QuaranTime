@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!--<?xml version="1.0" encoding="utf-8"?>
 
-<!--
 DESIGN OF SCHEDULE PAGE
 according to the draft, PROFILE is to the left and SCORE is to the right
 ideally this should be a scrollable page
--->
 
 <name>Schedule</name>
 <button>Edit</button>
@@ -20,3 +18,4 @@ ideally this should be a scrollable page
 
 <footer>
 </footer>
+-->
