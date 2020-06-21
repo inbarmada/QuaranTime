@@ -16,42 +16,6 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="89dp" />
 
-    <EditText
-        android:id="@+id/editTextDate4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="315dp" />
-
-    <EditText
-        android:id="@+id/editTextDate5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="367dp" />
-
-    <EditText
-        android:id="@+id/editTextDate8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="476dp" />
-
-    <EditText
-        android:id="@+id/editTextDate7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="421dp" />
-
     <TextView
         android:id="@+id/text_dashboard"
         android:layout_width="match_parent"
@@ -79,32 +43,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.13" />
-
-    <EditText
-        android:id="@+id/editTextDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="155dp" />
-
-    <EditText
-        android:id="@+id/editTextDate2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="262dp" />
-
-    <EditText
-        android:id="@+id/editTextDate6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="208dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
