@@ -38,7 +38,9 @@ public class HomeActivity extends AppCompatActivity {
     }
     public void addTaskClicked (View view) {
         Log.d("HomeActivity", "add tassk clicked");
-        startActivity(new Intent(HomeActivity.this, Pop.class));
+        Intent i = new Intent(getApplicationContext(),Pop.class);
+        startActivity(i);
+//        startActivity(new Intent(HomeActivity.this, Pop.class));
     }
 
 
