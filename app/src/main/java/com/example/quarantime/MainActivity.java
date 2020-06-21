@@ -1,5 +1,6 @@
 package com.example.quarantime;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -16,6 +18,7 @@ import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
     private static int id = 0;
+    private Notifications notificationThing = new Notifications(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +72,13 @@ public class MainActivity extends AppCompatActivity {
         username.setText("");
         userpassword.setText("");
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public void sendNotification(View view){
+        String title = "This is a title";
+        String text = "PlzWorkPlzPlzPlzplzPlz";
+        notificationThing.sendNotification(title,text);
     }
 
 }
