@@ -26,7 +26,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".Pop">
+        <activity android:name=".Pop"
+            android:theme="@style/AppTheme.PopMe">
         </activity>
     </application>
 
