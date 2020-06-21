@@ -21,6 +21,5 @@ public class Pop extends Activity {
         params.x = 0;
         params.y = -20;
         getWindow().setAttributes(params);
-
     }
 }

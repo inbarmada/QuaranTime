@@ -14,11 +14,12 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Welcome to QuaranTime"
+        android:fontFamily="@font/louisgeorgecafe"
         android:gravity="center"
+        android:text="Welcome to QuaranTime!"
         android:textColor="#000000"
         android:textSize="40sp"
-        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="269dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

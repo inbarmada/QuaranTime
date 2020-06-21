@@ -29,6 +29,8 @@
         <activity android:name=".Pop"
             android:theme="@style/AppTheme.PopMe">
         </activity>
+
+        <receiver android:name=".NotificationsBroadcast"/>
     </application>
 
 </manifest>
