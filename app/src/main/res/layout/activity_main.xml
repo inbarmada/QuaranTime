@@ -20,6 +20,5 @@
         android:textSize="40sp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="269dp" />
->>>>>>> 1e0d62e527b8a77b58e21dd9c0b96d26eef7601c
 
 </androidx.constraintlayout.widget.ConstraintLayout>
