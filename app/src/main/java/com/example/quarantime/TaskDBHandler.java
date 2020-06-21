@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.util.Log;
 
 import java.util.Date;
 
@@ -19,7 +20,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_TIME = "Time";
     public static final String COLUMN_STATUS = "Status";
     public static final String COLUMN_REMIND = "Reminder";
-    public static final String COLUMN_CATEGORY = "Time";
+    public static final String COLUMN_CATEGORY = "Category";
     public static final String COLUMN_SCORE = "Score";
 
     //initialize the database
@@ -30,22 +31,26 @@ public class TaskDBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + COLUMN_ID +
                 " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT, " + COLUMN_DESC + " TEXT, " +
-                COLUMN_TIME + " ____ , " + COLUMN_STATUS + " TEXT, " + COLUMN_REMIND + " TEXT, " +
-                COLUMN_CATEGORY + " TEXT, " + COLUMN_SCORE + "INTEGER)";
+                COLUMN_TIME + " TEXT, " + COLUMN_STATUS + " TEXT, " + COLUMN_REMIND + " TEXT, " +
+                COLUMN_CATEGORY + " TEXT, " + COLUMN_SCORE + " INTEGER)";
         db.execSQL(CREATE_TABLE);
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {}
     public String loadHandler() {
+        Log.d("taskdbhandler", "load handler");
+
         String result = "";
         String query = "Select * FROM " + TABLE_NAME;
+        Log.d("taskdbhandler", "query created");
+
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         while (cursor.moveToNext()) {
             int result_0 = cursor.getInt(0);
             String result_1 = cursor.getString(1);
             String result_2 = cursor.getString(2);
-            result += String.valueOf(result_0) + " " + result_1 + result_2 +
+            result += String.valueOf(result_0) + " " + result_1 + " " + result_2 +
                     System.getProperty("line.separator");
         }
         cursor.close();
@@ -54,17 +59,35 @@ public class TaskDBHandler extends SQLiteOpenHelper {
     }
 
     public void addHandler(Task task) {
+        Log.d("taskdbhandler", "add handler");
+
         ContentValues values = new ContentValues();
+        Log.d("taskdbhandler", "values thing");
+
         values.put(COLUMN_ID, task.getID());
+        Log.d("taskdbhandler", "1");
         values.put(COLUMN_NAME, task.getName());
+        Log.d("taskdbhandler", "2");
         values.put(COLUMN_DESC, task.getDesc());
+        Log.d("taskdbhandler", "3");
         values.put(COLUMN_TIME, task.getStringTime());
+        Log.d("taskdbhandler", "4");
         values.put(COLUMN_STATUS, task.getStatus());
+        Log.d("taskdbhandler", "5");
         values.put(COLUMN_REMIND, task.getReminder());
+        Log.d("taskdbhandler", "6");
         values.put(COLUMN_CATEGORY, task.getCategory());
+        Log.d("taskdbhandler", "7");
         values.put(COLUMN_SCORE, task.getScore());
+        Log.d("taskdbhandler", "8");
+        Log.d("taskdbhandler", "put things");
+
         SQLiteDatabase db = this.getWritableDatabase();
+        Log.d("taskdbhandler", "get db");
+
         db.insert(TABLE_NAME, null, values);
+        Log.d("taskdbhandler", "insert things");
+
         db.close();
     }
 
