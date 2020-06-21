@@ -37,6 +37,7 @@ public class Notifications {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void sendNotification(String title, String text){
+        createNotificationChannel();
         NotificationCompat.Builder builder = new NotificationCompat.Builder(c, "I.DONT.KNOW.WHAT.I.AM.DOING")
                 .setSmallIcon(R.drawable.ic_home_black_24dp)
                 .setContentTitle(title)

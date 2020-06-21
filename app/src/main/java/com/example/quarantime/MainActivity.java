@@ -77,9 +77,11 @@ public class MainActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void sendNotification(View view){
+        Log.d("sN","button works");
         String title = "This is a title";
         String text = "PlzWorkPlzPlzPlzplzPlz";
         notificationThing.sendNotification(title,text);
+        Log.d("sN","shouldSend");
     }
 
     public void sendMessage(View view) {
