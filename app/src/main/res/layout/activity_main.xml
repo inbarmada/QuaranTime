@@ -14,11 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-<<<<<<< HEAD
         android:fontFamily="@font/louisgeorgecafe"
-=======
-        android:text="Welcome to QuaranTime"
->>>>>>> fee6f8c4223eac3fba9f6fae322a0387f251f5f7
         android:gravity="center"
         android:text="Welcome to QuaranTime!"
         android:textColor="#000000"
