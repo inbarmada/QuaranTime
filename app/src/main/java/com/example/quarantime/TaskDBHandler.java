@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.ContentValues;
 import android.database.Cursor;
 
+import java.util.Date;
+
 public class TaskDBHandler extends SQLiteOpenHelper {
     //information of database
     private static final int DATABASE_VERSION = 1;
@@ -50,6 +52,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         db.close();
         return result;
     }
+
     public void addHandler(Task task) {
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID, task.getID());
@@ -64,6 +67,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         db.insert(TABLE_NAME, null, values);
         db.close();
     }
+
     //Take in password and verify it
     public User findHandler(String username) {
         String query = "Select * FROM " + TABLE_NAME + "WHERE" + COLUMN_NAME + " = " + "'" + username + "'";
@@ -102,11 +106,18 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         return result;
     }
 
-    public boolean updateHandler(int ID, String name) {
+    public boolean updateHandler(int id, String name, String desc, String time, boolean reminder, String status, String category, int score) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues args = new ContentValues();
-        args.put(COLUMN_ID, ID);
-        args.put(COLUMN_NAME, name);
-        return db.update(TABLE_NAME, args, COLUMN_ID + "=" + ID, null) > 0;
+        args.put(COLUMN_ID, id);
+        if (name != null) args.put(COLUMN_NAME, name);
+        if (desc != null) args.put(COLUMN_DESC, desc);
+        if (time != null) args.put(COLUMN_TIME, time);
+        if (status != null) args.put(COLUMN_NAME, status);
+        if (category != null) args.put(COLUMN_CATEGORY, category);
+        args.put(COLUMN_REMIND, reminder);
+        args.put(COLUMN_SCORE, score);
+        return db.update(TABLE_NAME, args, COLUMN_ID + "=" + id, null) > 0;
     }
+
 }

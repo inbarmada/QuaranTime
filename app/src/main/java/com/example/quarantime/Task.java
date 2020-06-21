@@ -14,7 +14,9 @@ public class Task {
     private String category; //Maybe in the future have a set (array) of categories, and pick one (an index) from them?
     private int score;
 
-    public Task() {}
+    public Task() {
+        System.out.println("ohno");
+    }
     public Task(int id, String name, String desc, Date time, boolean reminder, String category, int score) {
         this.id = id;
         this.name = name;
