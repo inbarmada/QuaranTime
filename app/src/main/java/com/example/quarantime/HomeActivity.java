@@ -101,6 +101,8 @@ public class HomeActivity extends AppCompatActivity {
         editor.putInt("score", getScore() + 5);
         editor.commit();
         Log.d("HomeActivity", "Checking score : " + getScore());
+        TextView t = (TextView) findViewById(R.id.displayScore);
+        t.setText("Score : " + getScore());
     }
 
 
