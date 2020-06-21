@@ -7,6 +7,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +25,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         BottomNavigationView navView = findViewById(R.id.nav_view);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -74,7 +77,41 @@ public class HomeActivity extends AppCompatActivity {
         show.setText(dbHandler.loadHandler());
         username.setText("");
         userpassword.setText("");
-
     }
+
+    public void getScore(View view) {
+        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+        try {
+            int score = prefs.getInt("score", 0); //0 is the default value
+            Log.d("HomeActivity", "Getting score : " + score);
+        } catch (Exception e) {
+            Log.d("HomeActivity", "Getting score : " + 0 + " (zero)");
+        }
+    }
+
+    public int getScore() {
+        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+        try {
+            int score = prefs.getInt("score", 0); //0 is the default value
+            Log.d("HomeActivity", "Getting score : " + score);
+            return score;
+        } catch (Exception e) {
+            Log.d("HomeActivity", "Getting score : " + 0 + " (zero)");
+            return 0;
+        }
+    }
+
+    public  void addScore(View view) {
+        Log.d("HomeActivity", "Putting score : ");
+        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("score", getScore() + 5);
+        editor.commit();
+        Log.d("HomeActivity", "Checking score : " + getScore());
+        TextView t = (TextView) findViewById(R.id.displayScore);
+        t.setText("Score : " + getScore());
+    }
+
+
 
 }
