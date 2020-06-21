@@ -1,5 +1,6 @@
 package com.example.quarantime;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -79,6 +80,11 @@ public class MainActivity extends AppCompatActivity {
         String title = "This is a title";
         String text = "PlzWorkPlzPlzPlzplzPlz";
         notificationThing.sendNotification(title,text);
+    }
+
+    public void sendMessage(View view) {
+        Intent intent = new Intent(this, TaskDBTester.class);
+        startActivity(intent);
     }
 
 }

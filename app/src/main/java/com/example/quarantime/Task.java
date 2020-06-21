@@ -1,5 +1,7 @@
 package com.example.quarantime;
 
+import android.util.Log;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,6 +20,7 @@ public class Task {
         System.out.println("ohno");
     }
     public Task(int id, String name, String desc, Date time, boolean reminder, String category, int score) {
+        Log.d("task", "create task");
         this.id = id;
         this.name = name;
         this.desc = desc;
@@ -26,7 +29,7 @@ public class Task {
         this.reminder = reminder;
         this.category = category;
         this.score = score;
-
+        Log.d("task", "done creating task");
     }
 
     /* Set Methods */
@@ -69,6 +72,7 @@ public class Task {
         return this.time;
     }
     public String getStringTime(){
+        if (this.time == null) return "";
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
         return dateFormat.format(this.time);
 

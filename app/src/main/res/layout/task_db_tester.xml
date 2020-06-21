@@ -9,7 +9,7 @@
 
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/taskname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/userpassword"
+        android:id="@+id/taskdesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -39,7 +39,7 @@
         android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="addUser"
+        android:onClick="addTask"
         android:text="ADD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +51,7 @@
         android:id="@+id/load"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="loadUsers"
+        android:onClick="loadTasks"
         android:text="Load"
         app:layout_constraintBottom_toTopOf="@+id/show"
         app:layout_constraintEnd_toEndOf="parent"
