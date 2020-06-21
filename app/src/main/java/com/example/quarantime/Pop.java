@@ -4,5 +4,7 @@ import android.app.Activity;
 
 public class Pop extends Activity {
     @Override
-    protected void onCreate
+    protected void onCreate() {
+
+    }
 }
