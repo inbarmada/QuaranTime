@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.util.Log;
 
+import java.text.ParseException;
 import java.util.Date;
 
 public class TaskDBHandler extends SQLiteOpenHelper {
@@ -22,6 +23,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_REMIND = "Reminder";
     public static final String COLUMN_CATEGORY = "Category";
     public static final String COLUMN_SCORE = "Score";
+
 
     //initialize the database
     public TaskDBHandler(Context context, SQLiteDatabase.CursorFactory factory) {
@@ -65,7 +67,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         Log.d("Notes: taskdbhandler", "values thing");
 
-        values.put(COLUMN_ID, task.getID());
+        //values.put(COLUMN_ID, task.getID());
         Log.d("Notes: taskdbhandler", "1");
         values.put(COLUMN_NAME, task.getName());
         Log.d("Notes: taskdbhandler", "2");
@@ -92,23 +94,23 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    //Take in password and verify it
-    public User findHandler(String username) {
-        String query = "Select * FROM " + TABLE_NAME + "WHERE" + COLUMN_NAME + " = " + "'" + username + "'";
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        User user = new User();
-        if (cursor.moveToFirst()) {
-            cursor.moveToFirst();
-            user.setID(Integer.parseInt(cursor.getString(0)));
-            user.setUsername(cursor.getString(1));
-            cursor.close();
-        } else {
-            user = null;
-        }
-        db.close();
-        return user;
-    }
+//    //Take in password and verify it
+//    public User findHandler(String username) {
+//        String query = "Select * FROM " + TABLE_NAME + "WHERE" + COLUMN_NAME + " = " + "'" + username + "'";
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        Cursor cursor = db.rawQuery(query, null);
+//        User user = new User();
+//        if (cursor.moveToFirst()) {
+//            cursor.moveToFirst();
+//            user.setID(Integer.parseInt(cursor.getString(0)));
+//            user.setUsername(cursor.getString(1));
+//            cursor.close();
+//        } else {
+//            user = null;
+//        }
+//        db.close();
+//        return user;
+//    }
 
     //Why does it need to make a User user?
     public boolean deleteHandler(int ID) {
@@ -144,4 +146,41 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         return db.update(TABLE_NAME, args, COLUMN_ID + "=" + id, null) > 0;
     }
 
+    public Task[] getTasks() throws ParseException {
+        Log.d("Notes: taskdbhandler", "load handler");
+
+        String query = "Select * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        int number = cursor.getCount();
+
+        Task[] result = new Task[number];
+        Log.d("Notes: taskdbhandler", "query created");
+
+        db = this.getWritableDatabase();
+        cursor = db.rawQuery(query, null);
+        for (int i = 0; i < result.length; i++) {
+            cursor.moveToNext();
+
+            //Get data
+            String name = cursor.getString(1);
+            String desc = cursor.getString(2);
+            String time = cursor.getString(3);
+            String status = cursor.getString(4);
+            String remind = cursor.getString(5);
+            String category = cursor.getString(6);
+            int score = cursor.getInt(7);
+
+            boolean rem = false;
+            if (remind.equals("true")) rem = true;
+            Task task = new Task(name, desc, time, rem, category, score);
+
+            result[i] = task;
+        }
+
+        cursor.close();
+        db.close();
+        return result;
+    }
 }
