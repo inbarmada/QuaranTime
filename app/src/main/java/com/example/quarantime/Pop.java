@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 
+import java.text.ParseException;
 import java.util.Date;
 
 public class Pop extends Activity {
@@ -27,14 +28,13 @@ public class Pop extends Activity {
         getWindow().setAttributes(params);
     }
 
-    static int taskID = 1;
-    public void addTaskButton(View view) {
+    public void addTaskButton(View view) throws ParseException {
 
         Log.d("Notes: pop", "adding task");
 
         TaskDBHandler dbHandler = new TaskDBHandler(this, null);
         //Date d =
-        Task t = new Task(taskID++, "Homework", "Tough", new Date(), false, "school", 15);
+        Task t = new Task("Homework", "Tough", "2020-07-12 12:12:12", false, "school", 15);
 
         dbHandler.addHandler(t);
     }
