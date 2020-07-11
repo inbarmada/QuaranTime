@@ -34,19 +34,23 @@ public class HomeActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-
     }
+
     public void addTaskClicked (View view) {
-        Log.d("HomeActivity", "add tassk clicked");
+        Log.d("Notes: HomeActivity", "add task clicked");
         Intent i = new Intent(getApplicationContext(),Pop.class);
         startActivity(i);
-//        startActivity(new Intent(HomeActivity.this, Pop.class));
+
+        TaskDBHandler dbHandler = new TaskDBHandler(this, null);
+
+        TextView showTasks = (TextView)findViewById(R.id.text_dashboard);
+        showTasks.setText(dbHandler.loadHandler());
     }
 
 
     public void addUser(View view) {
         //Debug
-        Log.d("addUser", "Added");
+        Log.d("Notes: addUser", "Added");
 
 
         //Get username and password variables
@@ -58,7 +62,7 @@ public class HomeActivity extends AppCompatActivity {
         id++;
         String name = username.getText().toString();
         int password_hash = (userpassword.getText().toString()).hashCode();
-        Log.d("loadUsers", "Name:" + name + "  Password:"+password_hash);
+        Log.d("Notes: loadUsers", "Name:" + name + "  Password:"+password_hash);
         User user = new User(id, name, password_hash);
         dbHandler.addHandler(user);
         username.setText("");
@@ -68,7 +72,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void loadUsers(View view) {
         //Debug
-        Log.d("loadUsers", "Loaded");
+        Log.d("Notes: loadUsers", "Loaded");
 
         //Get username and password variables
         EditText username   = (EditText)findViewById(R.id.username);
@@ -85,9 +89,9 @@ public class HomeActivity extends AppCompatActivity {
         SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
         try {
             int score = prefs.getInt("score", 0); //0 is the default value
-            Log.d("HomeActivity", "Getting score : " + score);
+            Log.d("Notes: HomeActivity", "Getting score : " + score);
         } catch (Exception e) {
-            Log.d("HomeActivity", "Getting score : " + 0 + " (zero)");
+            Log.d("Notes: HomeActivity", "Getting score : " + 0 + " (zero)");
         }
     }
 
@@ -95,23 +99,23 @@ public class HomeActivity extends AppCompatActivity {
         SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
         try {
             int score = prefs.getInt("score", 0); //0 is the default value
-            Log.d("HomeActivity", "Getting score : " + score);
+            Log.d("Notes: HomeActivity", "Getting score : " + score);
             return score;
         } catch (Exception e) {
-            Log.d("HomeActivity", "Getting score : " + 0 + " (zero)");
+            Log.d("Notes: HomeActivity", "Getting score : " + 0 + " (zero)");
             return 0;
         }
     }
 
     public  void addScore(View view) {
-        Log.d("HomeActivity", "Putting score : ");
+        Log.d("Notes: HomeActivity", "Putting score : ");
         SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("score", getScore() + 5);
+        editor.putInt("Notes: score", getScore() + 5);
         editor.commit();
-        Log.d("HomeActivity", "Checking score : " + getScore());
+        Log.d("Notes: HomeActivity", "Checking score : " + getScore());
         TextView t = (TextView) findViewById(R.id.displayScore);
-        t.setText("Score : " + getScore());
+        t.setText("Notes: Score : " + getScore());
     }
 
 

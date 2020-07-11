@@ -29,7 +29,7 @@ public class TaskDBTester extends AppCompatActivity {
         Log.d("tasktester", "Added1");
 
         //Create database
-        TaskDBHandler dbHandler = new TaskDBHandler(this, null, null, 1);
+        TaskDBHandler dbHandler = new TaskDBHandler(this, null);
         Log.d("tasktester", "Added2");
 
         //int id = Integer.parseInt(userid.getText().toString());
@@ -57,7 +57,7 @@ public class TaskDBTester extends AppCompatActivity {
         EditText userpassword   = (EditText)findViewById(R.id.taskdesc);
         TextView show = (TextView)findViewById(R.id.show);
         //Create database
-        TaskDBHandler dbHandler = new TaskDBHandler(this, null, null, 1);
+        TaskDBHandler dbHandler = new TaskDBHandler(this, null);
         show.setText(dbHandler.loadHandler());
         username.setText("");
         userpassword.setText("");
