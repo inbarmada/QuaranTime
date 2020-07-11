@@ -2,11 +2,93 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/popup_bg"
->
+    android:background="@drawable/pop_bg">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView"
+        android:layout_width="317dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="386dp"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:text="Add a Task"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="161dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="172dp"
+        android:gravity="center"
+        android:layout_marginRight="172dp"
+        android:layout_marginBottom="299dp"
+        android:text="Task Name"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="161dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="173dp"
+        android:layout_marginRight="173dp"
+        android:layout_marginBottom="232dp"
+        android:gravity="center"
+        android:text="Description"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="161dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="174dp"
+        android:layout_marginRight="174dp"
+        android:layout_marginBottom="166dp"
+        android:gravity="center"
+        android:text="Time"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="303dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editTextTextDescription"
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginBottom="232dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editTextTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -26,20 +108,21 @@
 
     <Button
         android:id="@+id/addButton"
-        android:layout_width="215dp"
-        android:layout_height="190dp"
+        android:layout_width="154dp"
+        android:layout_height="47dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="-3dp"
-        android:layout_marginLeft="-3dp"
-        android:layout_marginTop="180dp"
-        android:layout_marginEnd="157dp"
-        android:layout_marginRight="157dp"
-        android:layout_marginBottom="384dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="628dp"
+        android:layout_marginEnd="173dp"
+        android:layout_marginRight="173dp"
+        android:layout_marginBottom="79dp"
         android:onClick="addTaskButton"
         android:text="Add the Task" />
+
 </RelativeLayout>

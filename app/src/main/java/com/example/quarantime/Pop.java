@@ -23,7 +23,7 @@ public class Pop extends Activity {
         WindowManager.LayoutParams params = getWindow().getAttributes();
         params.gravity = Gravity.CENTER;
         params.x = 0;
-        params.y=-20;
+        params.y = -20;
         getWindow().setAttributes(params);
     }
 
