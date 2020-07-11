@@ -4,38 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.notifications.NotificationsFragment">
-
-    <Button
-        android:id="@+id/addScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="addScore"
-        android:text="Add 5"
-        app:layout_constraintBottom_toTopOf="@+id/showScore"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/showScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="getScore"
-        android:text="Show Score"
-        app:layout_constraintBottom_toTopOf="@+id/displayScore"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addScore" />
+    tools:context=".ui.notifications.NotificationsFragment"
+    android:background="#709dcf">
 
     <TextView
         android:id="@+id/displayScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Score : 0"
+        android:layout_marginBottom="228dp"
+        android:text="Score : "
+        android:textSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="224dp"
+        android:layout_height="262dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/trophy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/showScore" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/getScore"
+        android:layout_width="145dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="220dp"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.796"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

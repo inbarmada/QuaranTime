@@ -79,15 +79,15 @@ public class HomeActivity extends AppCompatActivity {
         userpassword.setText("");
     }
 
-    public void getScore(View view) {
-        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
-        try {
-            int score = prefs.getInt("score", 0); //0 is the default value
-            Log.d("HomeActivity", "Getting score : " + score);
-        } catch (Exception e) {
-            Log.d("HomeActivity", "Getting score : " + 0 + " (zero)");
-        }
-    }
+//    public void getScore(View view) {
+//        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+//        try {
+//            int score = prefs.getInt("score", 0); //0 is the default value
+//            Log.d("HomeActivity", "Getting score : " + score);
+//        } catch (Exception e) {
+//            Log.d("HomeActivity", "Getting score : " + 0 + " (zero)");
+//        }
+//    }
 
     public int getScore() {
         SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
