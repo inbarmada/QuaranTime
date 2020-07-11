@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.ParseException;
 import java.util.Date;
 
 public class TaskDBTester extends AppCompatActivity {
@@ -19,7 +20,7 @@ public class TaskDBTester extends AppCompatActivity {
     }
 
 
-    public void addTask(View view) {
+    public void addTask(View view) throws ParseException {
         //Debug
         Log.d("tasktester", "Added");
 
@@ -36,7 +37,7 @@ public class TaskDBTester extends AppCompatActivity {
         String name = nameET.getText().toString();
         String desc = descET.getText().toString();
         Log.d("tasktester", "Name: " + name + " Description: " + desc);
-        Task task = new Task(++id, name, desc, null, false, "study", 5);
+        Task task = new Task(name, desc, "", false, "study", 5);
         Log.d("tasktester", "new task");
 
         dbHandler.addHandler(task);
