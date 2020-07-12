@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.ParseException;
 import java.util.Date;
 
 public class TaskDBTester extends AppCompatActivity {
@@ -19,7 +20,7 @@ public class TaskDBTester extends AppCompatActivity {
     }
 
 
-    public void addTask(View view) {
+    public void addTask(View view) throws ParseException {
         //Debug
         Log.d("tasktester", "Added");
 
@@ -29,14 +30,14 @@ public class TaskDBTester extends AppCompatActivity {
         Log.d("tasktester", "Added1");
 
         //Create database
-        TaskDBHandler dbHandler = new TaskDBHandler(this, null, null, 1);
+        TaskDBHandler dbHandler = new TaskDBHandler(this, null);
         Log.d("tasktester", "Added2");
 
         //int id = Integer.parseInt(userid.getText().toString());
         String name = nameET.getText().toString();
         String desc = descET.getText().toString();
         Log.d("tasktester", "Name: " + name + " Description: " + desc);
-        Task task = new Task(++id, name, desc, null, false, "study", 5);
+        Task task = new Task(name, desc, "", false, "study", 5);
         Log.d("tasktester", "new task");
 
         dbHandler.addHandler(task);
@@ -57,7 +58,7 @@ public class TaskDBTester extends AppCompatActivity {
         EditText userpassword   = (EditText)findViewById(R.id.taskdesc);
         TextView show = (TextView)findViewById(R.id.show);
         //Create database
-        TaskDBHandler dbHandler = new TaskDBHandler(this, null, null, 1);
+        TaskDBHandler dbHandler = new TaskDBHandler(this, null);
         show.setText(dbHandler.loadHandler());
         username.setText("");
         userpassword.setText("");

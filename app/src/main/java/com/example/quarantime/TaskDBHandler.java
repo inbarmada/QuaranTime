@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.util.Log;
 
+import java.text.ParseException;
 import java.util.Date;
 
 public class TaskDBHandler extends SQLiteOpenHelper {
@@ -23,10 +24,12 @@ public class TaskDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_CATEGORY = "Category";
     public static final String COLUMN_SCORE = "Score";
 
+
     //initialize the database
-    public TaskDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public TaskDBHandler(Context context, SQLiteDatabase.CursorFactory factory) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + COLUMN_ID +
@@ -38,11 +41,11 @@ public class TaskDBHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {}
     public String loadHandler() {
-        Log.d("taskdbhandler", "load handler");
+        Log.d("Notes: taskdbhandler", "load handler");
 
         String result = "";
         String query = "Select * FROM " + TABLE_NAME;
-        Log.d("taskdbhandler", "query created");
+        Log.d("Notes: taskdbhandler", "query created");
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
@@ -59,55 +62,55 @@ public class TaskDBHandler extends SQLiteOpenHelper {
     }
 
     public void addHandler(Task task) {
-        Log.d("taskdbhandler", "add handler");
+        Log.d("Notes: taskdbhandler", "add handler");
 
         ContentValues values = new ContentValues();
-        Log.d("taskdbhandler", "values thing");
+        Log.d("Notes: taskdbhandler", "values thing");
 
-        values.put(COLUMN_ID, task.getID());
-        Log.d("taskdbhandler", "1");
+        //values.put(COLUMN_ID, task.getID());
+        Log.d("Notes: taskdbhandler", "1");
         values.put(COLUMN_NAME, task.getName());
-        Log.d("taskdbhandler", "2");
+        Log.d("Notes: taskdbhandler", "2");
         values.put(COLUMN_DESC, task.getDesc());
-        Log.d("taskdbhandler", "3");
+        Log.d("Notes: taskdbhandler", "3");
         values.put(COLUMN_TIME, task.getStringTime());
-        Log.d("taskdbhandler", "4");
+        Log.d("Notes: taskdbhandler", "4");
         values.put(COLUMN_STATUS, task.getStatus());
-        Log.d("taskdbhandler", "5");
+        Log.d("Notes: taskdbhandler", "5");
         values.put(COLUMN_REMIND, task.getReminder());
-        Log.d("taskdbhandler", "6");
+        Log.d("Notes: taskdbhandler", "6");
         values.put(COLUMN_CATEGORY, task.getCategory());
-        Log.d("taskdbhandler", "7");
+        Log.d("Notes: taskdbhandler", "7");
         values.put(COLUMN_SCORE, task.getScore());
-        Log.d("taskdbhandler", "8");
-        Log.d("taskdbhandler", "put things");
+        Log.d("Notes: taskdbhandler", "8");
+        Log.d("Notes: taskdbhandler", "put things");
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Log.d("taskdbhandler", "get db");
+        Log.d("Notes: taskdbhandler", "get db");
 
         db.insert(TABLE_NAME, null, values);
-        Log.d("taskdbhandler", "insert things");
+        Log.d("Notes: taskdbhandler", "insert things");
 
         db.close();
     }
 
-    //Take in password and verify it
-    public User findHandler(String username) {
-        String query = "Select * FROM " + TABLE_NAME + "WHERE" + COLUMN_NAME + " = " + "'" + username + "'";
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
-        User user = new User();
-        if (cursor.moveToFirst()) {
-            cursor.moveToFirst();
-            user.setID(Integer.parseInt(cursor.getString(0)));
-            user.setUsername(cursor.getString(1));
-            cursor.close();
-        } else {
-            user = null;
-        }
-        db.close();
-        return user;
-    }
+//    //Take in password and verify it
+//    public User findHandler(String username) {
+//        String query = "Select * FROM " + TABLE_NAME + "WHERE" + COLUMN_NAME + " = " + "'" + username + "'";
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        Cursor cursor = db.rawQuery(query, null);
+//        User user = new User();
+//        if (cursor.moveToFirst()) {
+//            cursor.moveToFirst();
+//            user.setID(Integer.parseInt(cursor.getString(0)));
+//            user.setUsername(cursor.getString(1));
+//            cursor.close();
+//        } else {
+//            user = null;
+//        }
+//        db.close();
+//        return user;
+//    }
 
     //Why does it need to make a User user?
     public boolean deleteHandler(int ID) {
@@ -143,4 +146,41 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         return db.update(TABLE_NAME, args, COLUMN_ID + "=" + id, null) > 0;
     }
 
+    public Task[] getTasks() throws ParseException {
+        Log.d("Notes: taskdbhandler", "load handler");
+
+        String query = "Select * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        int number = cursor.getCount();
+
+        Task[] result = new Task[number];
+        Log.d("Notes: taskdbhandler", "query created");
+
+        db = this.getWritableDatabase();
+        cursor = db.rawQuery(query, null);
+        for (int i = 0; i < result.length; i++) {
+            cursor.moveToNext();
+
+            //Get data
+            String name = cursor.getString(1);
+            String desc = cursor.getString(2);
+            String time = cursor.getString(3);
+            String status = cursor.getString(4);
+            String remind = cursor.getString(5);
+            String category = cursor.getString(6);
+            int score = cursor.getInt(7);
+
+            boolean rem = false;
+            if (remind.equals("true")) rem = true;
+            Task task = new Task(name, desc, time, rem, category, score);
+
+            result[i] = task;
+        }
+
+        cursor.close();
+        db.close();
+        return result;
+    }
 }

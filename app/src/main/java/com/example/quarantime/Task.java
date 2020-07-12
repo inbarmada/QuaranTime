@@ -3,6 +3,7 @@ package com.example.quarantime;
 import android.util.Log;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,12 +20,13 @@ public class Task {
     public Task() {
         System.out.println("ohno");
     }
-    public Task(int id, String name, String desc, Date time, boolean reminder, String category, int score) {
+    public Task(String name, String desc, String time, boolean reminder, String category, int score) throws ParseException {
         Log.d("task", "create task");
-        this.id = id;
+        //this.id = id;
         this.name = name;
         this.desc = desc;
-        this.time = time;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        this.time = dateFormat.parse(time);
         this.status = "Not Started";
         this.reminder = reminder;
         this.category = category;

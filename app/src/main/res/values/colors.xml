@@ -3,4 +3,9 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="darkBlue">#4267CA</color>
+    <color name="medBlue">#88A2E6</color>
+    <color name="lightBlue">#B3C5F3</color>
+    <color name="lightOrange">#FFD695</color>
+    <color name="medOrange">#DE7E12</color>
 </resources>

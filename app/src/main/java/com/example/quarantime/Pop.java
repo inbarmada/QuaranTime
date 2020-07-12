@@ -3,8 +3,13 @@ package com.example.quarantime;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.view.WindowManager;
+
+import java.text.ParseException;
+import java.util.Date;
 
 public class Pop extends Activity {
     @Override
@@ -21,6 +26,16 @@ public class Pop extends Activity {
         params.x = 0;
         params.y = -20;
         getWindow().setAttributes(params);
+    }
 
+    public void addTaskButton(View view) throws ParseException {
+
+        Log.d("Notes: pop", "adding task");
+
+        TaskDBHandler dbHandler = new TaskDBHandler(this, null);
+        //Date d =
+        Task t = new Task("Homework", "Tough", "2020-07-12 12:12:12", false, "school", 15);
+
+        dbHandler.addHandler(t);
     }
 }
