@@ -59,7 +59,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         Log.d("Notes: DashFragment", "onBindViewHolder");
-        holder.textView.setText(mDataset[position].getName());
+        holder.checkBox.setText(mDataset[position].getName());
+        holder.textView.setText(mDataset[position].getDesc());
         Log.d("Notes: DashFragment", "onBindViewHolder done");
     }
 
