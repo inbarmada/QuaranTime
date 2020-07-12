@@ -3,8 +3,10 @@ package com.example.quarantime.ui.dashboard;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quarantime.R;
@@ -19,9 +21,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView textView;
-        public MyViewHolder(TextView v) {
+        public CheckBox checkBox;
+        public MyViewHolder(CardView v) {
             super(v);
-            textView = v;
+            checkBox = (CheckBox)v.getChildAt(0);
+            textView = (TextView)v.getChildAt(1);
         }
     }
 
@@ -40,7 +44,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
 
         // create a new view
-        TextView v = (TextView) LayoutInflater.from(parent.getContext())
+        CardView v = (CardView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.task_view, parent, false);
 
         Log.d("Notes: MyAdapter", "oncreateviewholder created textview");
