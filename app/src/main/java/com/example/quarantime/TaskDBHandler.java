@@ -7,9 +7,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.util.Log;
 
-import java.text.ParseException;
-import java.util.Date;
-
 public class TaskDBHandler extends SQLiteOpenHelper {
     //information of database
     private static final int DATABASE_VERSION = 1;
@@ -146,7 +143,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         return db.update(TABLE_NAME, args, COLUMN_ID + "=" + id, null) > 0;
     }
 
-    public Task[] getTasks() throws ParseException {
+    public Task[] getTasks() {
         Log.d("Notes: taskdbhandler", "load handler");
 
         String query = "Select * FROM " + TABLE_NAME;

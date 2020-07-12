@@ -5,6 +5,7 @@ import android.util.Log;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Task {
@@ -12,6 +13,7 @@ public class Task {
     private String name;
     private String desc;
     private Date time;
+    private String timeStr;
     private String status;
     private boolean reminder;
     private String category; //Maybe in the future have a set (array) of categories, and pick one (an index) from them?
@@ -20,13 +22,12 @@ public class Task {
     public Task() {
         System.out.println("ohno");
     }
-    public Task(String name, String desc, String time, boolean reminder, String category, int score) throws ParseException {
+    public Task(String name, String desc, String time, boolean reminder, String category, int score) {
         Log.d("task", "create task");
         //this.id = id;
         this.name = name;
         this.desc = desc;
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        this.time = dateFormat.parse(time);
+        timeStr = time;
         this.status = "Not Started";
         this.reminder = reminder;
         this.category = category;
@@ -41,10 +42,10 @@ public class Task {
     public void setName(String name) {
         this.name = name;
     }
-    public void getDesc(String description) {
+    public void setDesc(String description) {
         this.desc = description;
     }
-    public void getTime(Date time) {
+    public void setTime(Date time) {
         this.time = time;
     }
     public void setStatus(String status) {
@@ -70,8 +71,16 @@ public class Task {
     public String getDesc() {
         return this.desc;
     }
-    public Date getTime() {
-        return this.time;
+    public Date getTime() throws ParseException {
+        if (time != null)
+            return this.time;
+
+        SimpleDateFormat d = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        this.time = d.parse(timeStr);
+        return time;
+    }
+    public String getTimeStr() {
+        return timeStr;
     }
     public String getStringTime(){
         if (this.time == null) return "";
