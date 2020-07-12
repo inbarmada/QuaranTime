@@ -41,14 +41,8 @@ public class HomeActivity extends AppCompatActivity {
         Log.d("Notes: HomeActivity", "add task clicked");
         Intent i = new Intent(getApplicationContext(),Pop.class);
         startActivity(i);
-
-        TaskDBHandler dbHandler = new TaskDBHandler(this, null);
-
-        TextView showTasks = (TextView)findViewById(R.id.text_dashboard);
-        showTasks.setText(dbHandler.loadHandler());
     }
-
-
+    
     public void addUser(View view) {
         //Debug
         Log.d("Notes: addUser", "Added");
