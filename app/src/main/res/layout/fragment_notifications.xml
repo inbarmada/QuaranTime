@@ -4,26 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.notifications.NotificationsFragment"
+    tools:context="com.example.quarantime.ui.notifications.NotificationsFragment"
     android:background="#709dcf">
 
     <TextView
-        android:id="@+id/displayScore"
+        android:id="@+id/tv_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="228dp"
-        android:text="Score : "
-        android:textSize="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="256dp"
+        android:layout_centerHorizontal="true"
+        android:text="Score : 0"
+        android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.26"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="DuplicateIds" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="224dp"
         android:layout_height="262dp"
         android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/trophy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -31,15 +35,37 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/getScore"
-        android:layout_width="145dp"
-        android:layout_height="59dp"
-        android:layout_marginBottom="220dp"
-        android:textSize="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.796"
-        app:layout_constraintStart_toStartOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_score"-->
+<!--        android:layout_width="145dp"-->
+<!--        android:layout_height="59dp"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginBottom="96dp"-->
+<!--        android:textSize="40dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/displayScore" />-->
+
+    <Button
+        android:id="@+id/showScoreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="SHOW SCORE"
+        app:layout_constraintTop_toBottomOf="@+id/tv_score"
+        tools:layout_editor_absoluteX="74dp" />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="add to SCORE"
+        android:onClick="adds"
+        app:layout_constraintTop_toBottomOf="@+id/tv_score"
+        tools:layout_editor_absoluteX="222dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

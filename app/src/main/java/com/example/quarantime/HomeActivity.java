@@ -34,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
     }
 
     public void addTaskClicked (View view) {
@@ -95,29 +96,4 @@ public class HomeActivity extends AppCompatActivity {
 //        }
 //    }
 
-    public int getScore() {
-        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
-        try {
-            int score = prefs.getInt("score", 0); //0 is the default value
-            Log.d("Notes: HomeActivity", "Getting score : " + score);
-            return score;
-        } catch (Exception e) {
-            Log.d("Notes: HomeActivity", "Getting score : " + 0 + " (zero)");
-            return 0;
-        }
     }
-
-    public  void addScore(View view) {
-        Log.d("Notes: HomeActivity", "Putting score : ");
-        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("Notes: score", getScore() + 5);
-        editor.commit();
-        Log.d("Notes: HomeActivity", "Checking score : " + getScore());
-        TextView t = (TextView) findViewById(R.id.displayScore);
-        t.setText("Notes: Score : " + getScore());
-    }
-
-
-
-}
