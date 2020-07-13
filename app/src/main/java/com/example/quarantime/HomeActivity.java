@@ -96,4 +96,38 @@ public class HomeActivity extends AppCompatActivity {
 //        }
 //    }
 
+    public void showScore(View view) {
+        TextView tv_score = (TextView)findViewById(R.id.tv_score);
+        tv_score.setText(""+getScore());
     }
+    public int getScore() {
+        int score = 0;
+        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+        try {
+            score = prefs.getInt("score", 0); //0 is the default value
+            Log.d("Notes: HomeActivity", "Getting score : " + score);
+        } catch (Exception e) {
+            Log.d("Notes: HomeActivity", "Getting score : " + 0 + " (zero)");
+        }
+        return score;
+    }
+
+    public void getScore(View view) {
+        TextView t = (TextView) findViewById(R.id.tv_score);
+        t.setText("Score : " + getScore());
+    }
+
+    public  void addScore(View view) {
+        Log.d("Notes: HomeActivity", "Putting score : ");
+        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("score", getScore() + 5);
+        editor.commit();
+        Log.d("Notes: HomeActivity", "Checking score : " + getScore());
+        TextView t = (TextView) findViewById(R.id.tv_score);
+        t.setText("Score : " + getScore());
+    }
+
+
+
+}
