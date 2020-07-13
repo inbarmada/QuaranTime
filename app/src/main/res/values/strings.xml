@@ -4,4 +4,9 @@
     <string name="title_dashboard">Schedule</string>
     <string name="title_notifications">Score</string>
     <string name="testNotification">Score</string>
+    <string-array name="categories_array">
+        <item>Work</item>
+        <item>Home</item>
+        <item>Fun</item>
+    </string-array>
 </resources>
