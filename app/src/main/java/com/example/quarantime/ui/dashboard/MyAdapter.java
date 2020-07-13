@@ -21,11 +21,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         public TextView textView;
+        public TextView taskID;
         public CheckBox checkBox;
         public MyViewHolder(CardView v) {
             super(v);
-            checkBox = (CheckBox)v.getChildAt(0);
-            textView = (TextView)v.getChildAt(1);
+            taskID = (TextView)v.getChildAt(0);
+            checkBox = (CheckBox)v.getChildAt(1);
+            textView = (TextView)v.getChildAt(2);
         }
     }
 
@@ -59,6 +61,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         Log.d("Notes: DashFragment", "onBindViewHolder");
+        holder.taskID.setText(mDataset[position].getID() + "");
         holder.checkBox.setText(mDataset[position].getName());
         holder.textView.setText(mDataset[position].getDesc());
         Log.d("Notes: DashFragment", "onBindViewHolder done");
