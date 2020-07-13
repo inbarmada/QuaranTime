@@ -34,11 +34,18 @@ public class NotificationsFragment extends Fragment {
 
         tv_score = (TextView) cont.findViewById(R.id.tv_score);
 
-        add = (Button) cont.findViewById(R.id.add);
+//        add = (Button) cont.findViewById(R.id.add);
+//
+//        add.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                adds(view);
+//            }
+//        });
         return root;
     }
 
-    public void adds(){
+    public void adds(View view){
         score += 5;
         tv_score.setText(""+score);
     }
