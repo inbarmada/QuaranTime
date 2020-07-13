@@ -112,7 +112,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
     //Why does it need to make a User user?
     public boolean deleteHandler(int ID) {
         boolean result = false;
-        String query = "Select * FROM" + TABLE_NAME + "WHERE" + COLUMN_ID + " = " + String.valueOf(ID) + "'";
+        String query = "Select * FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = " + String.valueOf(ID);
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
@@ -159,6 +159,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
             cursor.moveToNext();
 
             //Get data
+            int id = cursor.getInt(0);
             String name = cursor.getString(1);
             String desc = cursor.getString(2);
             String time = cursor.getString(3);
@@ -169,7 +170,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
 
             boolean rem = false;
             if (remind.equals("true")) rem = true;
-            Task task = new Task(name, desc, time, rem, category, score);
+            Task task = new Task(id, name, desc, time, rem, category, score);
 
             result[i] = task;
         }

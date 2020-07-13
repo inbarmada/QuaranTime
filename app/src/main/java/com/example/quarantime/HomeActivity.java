@@ -1,6 +1,7 @@
 package com.example.quarantime;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -43,6 +45,16 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void taskCompleted(View view) {
+        Log.d("Notes: HomeActivity", "taskCompleted");
+        CheckBox c = (CheckBox) view;
+        CardView card = (CardView) view.getParent();
+        TextView id = (TextView) card.getChildAt(0);
+        Log.d("Notes: HomeActivity", "taskCompleted: " + c.getText());
+        Log.d("Notes: HomeActivity", "taskCompleted: " + id.getText());
+        TaskDBHandler taskDB = new TaskDBHandler(this, null);
+        taskDB.deleteHandler(Integer.parseInt(id.getText() + ""));
+    }
 //    public void getScore(View view) {
 //        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
 //        try {

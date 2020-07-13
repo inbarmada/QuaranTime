@@ -22,9 +22,9 @@ public class Task {
     public Task() {
         System.out.println("ohno");
     }
-    public Task(String name, String desc, String time, boolean reminder, String category, int score) {
+    public Task(int id, String name, String desc, String time, boolean reminder, String category, int score) {
         Log.d("task", "create task");
-        //this.id = id;
+        this.id = id;
         this.name = name;
         this.desc = desc;
         timeStr = time;

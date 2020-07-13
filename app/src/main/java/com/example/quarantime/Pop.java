@@ -34,7 +34,7 @@ public class Pop extends Activity {
 
         TaskDBHandler dbHandler = new TaskDBHandler(this, null);
         //Date d =
-        Task t = new Task("Homework", "Tough", "2020-07-12 12:12:12", false, "school", 15);
+        Task t = new Task(-1, "Homework", "Tough", "2020-07-12 12:12:12", false, "school", 15);
 
         dbHandler.addHandler(t);
     }
