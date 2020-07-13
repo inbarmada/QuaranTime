@@ -23,11 +23,11 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="172dp"
-        android:gravity="center"
         android:layout_marginRight="172dp"
         android:layout_marginBottom="299dp"
+        android:gravity="center"
         android:text="Task Name"
-        android:textSize="20sp" />
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -36,12 +36,12 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="173dp"
-        android:layout_marginRight="173dp"
-        android:layout_marginBottom="232dp"
+        android:layout_marginEnd="174dp"
+        android:layout_marginRight="174dp"
+        android:layout_marginBottom="266dp"
         android:gravity="center"
-        android:text="Description"
-        android:textSize="20sp" />
+        android:text="Description:"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -50,12 +50,26 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="174dp"
-        android:layout_marginRight="174dp"
-        android:layout_marginBottom="166dp"
+        android:layout_marginEnd="189dp"
+        android:layout_marginRight="189dp"
+        android:layout_marginBottom="197dp"
         android:gravity="center"
-        android:text="Time"
-        android:textSize="20sp" />
+        android:text="Due Date:"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="161dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="196dp"
+        android:gravity="center"
+        android:text="Duration:"
+        android:textSize="14sp" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
@@ -67,38 +81,41 @@
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="303dp"
-        android:ems="10"
         android:inputType="textPersonName"
         android:text=""
-        android:textSize="20sp" />
+        android:textSize="14sp" />
+
 
     <EditText
         android:id="@+id/editTextTextDescription"
-        android:layout_width="181dp"
-        android:layout_height="wrap_content"
+        android:layout_width="235dp"
+        android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginBottom="232dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textSize="20sp" />
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        android:layout_marginBottom="226dp"
+        android:background="@drawable/textbox"
+        android:gravity="top"
+        android:textSize="14sp">
+
+        <requestFocus />
+
+    </EditText>
 
     <EditText
         android:id="@+id/editTextTime"
-        android:layout_width="181dp"
+        android:layout_width="55dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="2dp"
-        android:layout_marginRight="2dp"
-        android:layout_marginBottom="163dp"
-        android:ems="10"
-        android:inputType="time"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="197dp"
+        android:ems="14"
+        android:inputType="number"
         android:text=""
         android:textSize="20sp" />
 
@@ -109,11 +126,24 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="148dp"
-        android:layout_marginRight="148dp"
-        android:layout_marginBottom="99dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
+        android:layout_marginBottom="90dp"
         android:onClick="addTaskButton"
         android:text="Add the Task" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="63dp"
+        android:layout_height="31dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="129dp"
+        android:layout_marginRight="129dp"
+        android:layout_marginBottom="198dp"
+        android:ems="14"
+        android:inputType="date" />
 
 
 </RelativeLayout>
