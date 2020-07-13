@@ -42,43 +42,6 @@ public class HomeActivity extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(),Pop.class);
         startActivity(i);
     }
-    
-    public void addUser(View view) {
-        //Debug
-        Log.d("Notes: addUser", "Added");
-
-
-        //Get username and password variables
-        EditText username   = (EditText)findViewById(R.id.username);
-        EditText userpassword   = (EditText)findViewById(R.id.username);
-        //Create database
-        DBHandler dbHandler = new DBHandler(this, null, null, 1);
-        //int id = Integer.parseInt(userid.getText().toString());
-        id++;
-        String name = username.getText().toString();
-        int password_hash = (userpassword.getText().toString()).hashCode();
-        Log.d("Notes: loadUsers", "Name:" + name + "  Password:"+password_hash);
-        User user = new User(id, name, password_hash);
-        dbHandler.addHandler(user);
-        username.setText("");
-        userpassword.setText("");
-    }
-
-
-    public void loadUsers(View view) {
-        //Debug
-        Log.d("Notes: loadUsers", "Loaded");
-
-        //Get username and password variables
-        EditText username   = (EditText)findViewById(R.id.username);
-        EditText userpassword   = (EditText)findViewById(R.id.username);
-        TextView show = (TextView)findViewById(R.id.show);
-        //Create database
-        DBHandler dbHandler = new DBHandler(this, null, null, 1);
-        show.setText(dbHandler.loadHandler());
-        username.setText("");
-        userpassword.setText("");
-    }
 
 //    public void getScore(View view) {
 //        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);

@@ -115,12 +115,10 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         String query = "Select * FROM" + TABLE_NAME + "WHERE" + COLUMN_ID + " = " + String.valueOf(ID) + "'";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
-        User user = new User();
         if (cursor.moveToFirst()) {
-            user.setID(Integer.parseInt(cursor.getString(0)));
             db.delete(TABLE_NAME, COLUMN_ID + "=?",
                     new String[] {
-                            String.valueOf(user.getID())
+                            String.valueOf(Integer.parseInt(cursor.getString(0)))
                     });
             cursor.close();
             result = true;
