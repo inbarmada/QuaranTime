@@ -39,11 +39,11 @@ public class DashboardFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         TaskDBHandler taskDB = new TaskDBHandler(getContext(), null);
-        root = drawLayout(recyclerView, taskDB);
+        root = updateTasksView(recyclerView, taskDB);
         return root;
     }
 
-    public View drawLayout(RecyclerView recyclerView, TaskDBHandler taskDB){
+    public View updateTasksView(RecyclerView recyclerView, TaskDBHandler taskDB){
         Log.d("Notes: DashFragment", "drawlay: creating recView");
 
         // 1. get a reference to recyclerView

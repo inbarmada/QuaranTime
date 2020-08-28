@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,8 +47,27 @@ public class HomeActivity extends AppCompatActivity {
     public void addTaskClicked (View view) {
         Log.d("Notes: HomeActivity", "add task clicked");
         Intent i = new Intent(getApplicationContext(),Pop.class);
-        startActivity(i);
+        startActivityForResult(i, 2);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // check if the request code is same as what is passed  here it is 2
+        if(requestCode==2) {
+            TaskDBHandler taskDB = new TaskDBHandler(this, null);
+            Log.d("Notes: HomeActivity", "creating fragment: ");
+            DashboardFragment dashboard = new DashboardFragment();
+            Log.d("Notes: HomeActivity", "drawing fragment: ");
+            RecyclerView r = (RecyclerView) findViewById(R.id.recView);
+            dashboard.updateTasksView(r, taskDB);
+            Log.d("Notes: HomeActivity", "done with fragment: ");
+        }
+
+    }
+
 
     public void taskCompleted(View view) {
         Log.d("Notes: HomeActivity", "taskCompleted");
@@ -63,9 +83,8 @@ public class HomeActivity extends AppCompatActivity {
         DashboardFragment dashboard = new DashboardFragment();
         Log.d("Notes: HomeActivity", "drawing fragment: ");
         RecyclerView r = (RecyclerView) findViewById(R.id.recView);
-        dashboard.drawLayout(r, taskDB);
+        dashboard.updateTasksView(r, taskDB);
         Log.d("Notes: HomeActivity", "done with fragment: ");
-
     }
 //    public void getScore(View view) {
 //        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
