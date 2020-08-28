@@ -14,6 +14,7 @@ public class Task {
     private String desc;
     private Date time;
     private String timeStr;
+    private double duration;
     private String status;
     private boolean reminder;
     private String category; //Maybe in the future have a set (array) of categories, and pick one (an index) from them?
@@ -22,12 +23,13 @@ public class Task {
     public Task() {
         System.out.println("ohno");
     }
-    public Task(int id, String name, String desc, String time, boolean reminder, String category, int score) {
+    public Task(int id, String name, String desc, String time, double duration, boolean reminder, String category, int score) {
         Log.d("task", "create task");
         this.id = id;
         this.name = name;
         this.desc = desc;
         timeStr = time;
+        this.duration = duration;
         this.status = "Not Started";
         this.reminder = reminder;
         this.category = category;
@@ -47,6 +49,9 @@ public class Task {
     }
     public void setTime(Date time) {
         this.time = time;
+    }
+    public void setDuration(double duration){
+        this.duration = duration;
     }
     public void setStatus(String status) {
         this.status = status;
@@ -87,6 +92,9 @@ public class Task {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
         return dateFormat.format(this.time);
 
+    }
+    public double getDuration() {
+        return this.duration;
     }
     public String getStatus() {
         return this.status;

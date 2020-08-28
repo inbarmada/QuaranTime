@@ -16,6 +16,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_NAME = "TaskName";
     public static final String COLUMN_DESC = "Description";
     public static final String COLUMN_TIME = "Time";
+    public static final String COLUMN_DUR= "Duration";
     public static final String COLUMN_STATUS = "Status";
     public static final String COLUMN_REMIND = "Reminder";
     public static final String COLUMN_CATEGORY = "Category";
@@ -31,7 +32,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + COLUMN_ID +
                 " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT, " + COLUMN_DESC + " TEXT, " +
-                COLUMN_TIME + " TEXT, " + COLUMN_STATUS + " TEXT, " + COLUMN_REMIND + " TEXT, " +
+                COLUMN_TIME + " TEXT, " + COLUMN_DUR + " DOUBLE, " + COLUMN_STATUS + " TEXT, " + COLUMN_REMIND + " TEXT, " +
                 COLUMN_CATEGORY + " TEXT, " + COLUMN_SCORE + " INTEGER)";
         db.execSQL(CREATE_TABLE);
     }
@@ -71,6 +72,8 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         values.put(COLUMN_DESC, task.getDesc());
         Log.d("Notes: taskdbhandler", "3");
         values.put(COLUMN_TIME, task.getStringTime());
+        Log.d("Notes: taskdbhandler", "3.5");
+        values.put(COLUMN_DUR, task.getDuration());
         Log.d("Notes: taskdbhandler", "4");
         values.put(COLUMN_STATUS, task.getStatus());
         Log.d("Notes: taskdbhandler", "5");
@@ -127,13 +130,14 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         return result;
     }
 
-    public boolean updateHandler(int id, String name, String desc, String time, boolean reminder, String status, String category, int score) {
+    public boolean updateHandler(int id, String name, String desc, String time, double duration, boolean reminder, String status, String category, int score) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues args = new ContentValues();
         args.put(COLUMN_ID, id);
         if (name != null) args.put(COLUMN_NAME, name);
         if (desc != null) args.put(COLUMN_DESC, desc);
         if (time != null) args.put(COLUMN_TIME, time);
+        args.put(COLUMN_DUR, duration);
         if (status != null) args.put(COLUMN_NAME, status);
         if (category != null) args.put(COLUMN_CATEGORY, category);
         args.put(COLUMN_REMIND, reminder);
@@ -163,14 +167,15 @@ public class TaskDBHandler extends SQLiteOpenHelper {
             String name = cursor.getString(1);
             String desc = cursor.getString(2);
             String time = cursor.getString(3);
-            String status = cursor.getString(4);
-            String remind = cursor.getString(5);
-            String category = cursor.getString(6);
-            int score = cursor.getInt(7);
+            double duration = cursor.getDouble(4);
+            String status = cursor.getString(5);
+            String remind = cursor.getString(6);
+            String category = cursor.getString(7);
+            int score = cursor.getInt(8);
 
             boolean rem = false;
             if (remind.equals("true")) rem = true;
-            Task task = new Task(id, name, desc, time, rem, category, score);
+            Task task = new Task(id, name, desc, time, duration, rem, category, score);
 
             result[i] = task;
         }
