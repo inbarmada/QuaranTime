@@ -26,29 +26,37 @@ public class DashboardFragment extends Fragment {
 
     private DashboardViewModel dashboardViewModel;
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-
+    // private RecyclerView.LayoutManager layoutManager;
+    private View root;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         dashboardViewModel =
                 ViewModelProviders.of(this).get(DashboardViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        root = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
         Log.d("Notes: DashFragment", "oncreateview created root");
+        recyclerView = (RecyclerView) root.findViewById(R.id.recView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        TaskDBHandler taskDB = new TaskDBHandler(getContext(), null);
+        root = drawLayout(recyclerView, taskDB);
+        return root;
+    }
+
+    public View drawLayout(RecyclerView recyclerView, TaskDBHandler taskDB){
+        Log.d("Notes: DashFragment", "drawlay: creating recView");
 
         // 1. get a reference to recyclerView
-        RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.recView);
-        recyclerView.setHasFixedSize(true);
+        Log.d("Notes: DashFragment", "drawlay: createddd recView");
+
+        Log.d("Notes: DashFragment", "drawlay: set size");
 
         Log.d("Notes: DashFragment", "oncreateview: created recView");
 
         // 2. set layoutManger
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         Log.d("Notes: DashFragment", "oncreateview: set layout manager");
 
         // 3. Get Data
-        TaskDBHandler taskDB = new TaskDBHandler(getContext(), null);
         Task[] taskList = taskDB.getTasks();
         Log.d("Notes: DashFragment", "oncreateview: get tasks");
 
@@ -59,9 +67,10 @@ public class DashboardFragment extends Fragment {
         MyAdapter mAdapter = new MyAdapter(taskList);
         Log.d("Notes: DashFragment", "oncreateview: create adapter");
         // 5. set adapter
+
+        Log.d("Notes: DashFragment", "oncreateview: set adapter");
         recyclerView.setAdapter(mAdapter);
         Log.d("Notes: DashFragment", "oncreateview: set adapter");
-
         return root;
     }
 }

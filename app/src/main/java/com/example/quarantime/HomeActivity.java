@@ -6,18 +6,22 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.quarantime.ui.dashboard.DashboardFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
@@ -54,6 +58,14 @@ public class HomeActivity extends AppCompatActivity {
         Log.d("Notes: HomeActivity", "taskCompleted: " + id.getText());
         TaskDBHandler taskDB = new TaskDBHandler(this, null);
         taskDB.deleteHandler(Integer.parseInt(id.getText() + ""));
+
+        Log.d("Notes: HomeActivity", "creating fragment: ");
+        DashboardFragment dashboard = new DashboardFragment();
+        Log.d("Notes: HomeActivity", "drawing fragment: ");
+        RecyclerView r = (RecyclerView) findViewById(R.id.recView);
+        dashboard.drawLayout(r, taskDB);
+        Log.d("Notes: HomeActivity", "done with fragment: ");
+
     }
 //    public void getScore(View view) {
 //        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
@@ -69,6 +81,7 @@ public class HomeActivity extends AppCompatActivity {
         TextView tv_score = (TextView)findViewById(R.id.tv_score);
         tv_score.setText(""+getScore());
     }
+
     public int getScore() {
         int score = 0;
         SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
@@ -96,7 +109,4 @@ public class HomeActivity extends AppCompatActivity {
         TextView t = (TextView) findViewById(R.id.tv_score);
         t.setText("Score : " + getScore());
     }
-
-
-
 }
