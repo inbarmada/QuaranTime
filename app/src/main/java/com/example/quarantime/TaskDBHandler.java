@@ -94,31 +94,28 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-//    //Take in password and verify it
-//    public User findHandler(String username) {
-//        String query = "Select * FROM " + TABLE_NAME + "WHERE" + COLUMN_NAME + " = " + "'" + username + "'";
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        Cursor cursor = db.rawQuery(query, null);
-//        User user = new User();
-//        if (cursor.moveToFirst()) {
-//            cursor.moveToFirst();
-//            user.setID(Integer.parseInt(cursor.getString(0)));
-//            user.setUsername(cursor.getString(1));
-//            cursor.close();
-//        } else {
-//            user = null;
-//        }
-//        db.close();
-//        return user;
-//    }
-
-    //Why does it need to make a User user?
-    public boolean deleteHandler(int ID) {
+    public Task deleteHandler(int ID) {
         boolean result = false;
         String query = "Select * FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = " + String.valueOf(ID);
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
+        Task task = null;
         if (cursor.moveToFirst()) {
+            int id = cursor.getInt(0);
+            String name = cursor.getString(1);
+            String desc = cursor.getString(2);
+            String time = cursor.getString(3);
+            double duration = cursor.getDouble(4);
+            String status = cursor.getString(5);
+            String remind = cursor.getString(6);
+            String category = cursor.getString(7);
+            int score = cursor.getInt(8);
+
+            boolean rem = false;
+            if (remind.equals("true")) rem = true;
+            task = new Task(id, name, desc, time, duration, rem, category, score);
+
+
             db.delete(TABLE_NAME, COLUMN_ID + "=?",
                     new String[] {
                             String.valueOf(Integer.parseInt(cursor.getString(0)))
@@ -127,7 +124,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
             result = true;
         }
         db.close();
-        return result;
+        return task;
     }
 
     public boolean updateHandler(int id, String name, String desc, String time, double duration, boolean reminder, String status, String category, int score) {

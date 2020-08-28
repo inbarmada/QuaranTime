@@ -42,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
+        getScore();
     }
 
     public void addTaskClicked (View view) {
@@ -50,11 +51,11 @@ public class HomeActivity extends AppCompatActivity {
         startActivityForResult(i, 2);
     }
 
+    // For getting result from pop in order to refresh dashboard view
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
-
         // check if the request code is same as what is passed  here it is 2
         if(requestCode==2) {
             TaskDBHandler taskDB = new TaskDBHandler(this, null);
@@ -76,9 +77,12 @@ public class HomeActivity extends AppCompatActivity {
         TextView id = (TextView) card.getChildAt(0);
         Log.d("Notes: HomeActivity", "taskCompleted: " + c.getText());
         Log.d("Notes: HomeActivity", "taskCompleted: " + id.getText());
+        // Get database
         TaskDBHandler taskDB = new TaskDBHandler(this, null);
-        taskDB.deleteHandler(Integer.parseInt(id.getText() + ""));
-
+        // Get deleted task
+        Task t = taskDB.deleteHandler(Integer.parseInt(id.getText() + ""));
+        // Add to score
+        addScore(t.getScore());
         Log.d("Notes: HomeActivity", "creating fragment: ");
         DashboardFragment dashboard = new DashboardFragment();
         Log.d("Notes: HomeActivity", "drawing fragment: ");
@@ -86,15 +90,6 @@ public class HomeActivity extends AppCompatActivity {
         dashboard.updateTasksView(r, taskDB);
         Log.d("Notes: HomeActivity", "done with fragment: ");
     }
-//    public void getScore(View view) {
-//        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
-//        try {
-//            int score = prefs.getInt("score", 0); //0 is the default value
-//            Log.d("HomeActivity", "Getting score : " + score);
-//        } catch (Exception e) {
-//            Log.d("HomeActivity", "Getting score : " + 0 + " (zero)");
-//        }
-//    }
 
     public void showScore(View view) {
         TextView tv_score = (TextView)findViewById(R.id.tv_score);
@@ -118,14 +113,11 @@ public class HomeActivity extends AppCompatActivity {
         t.setText("Score : " + getScore());
     }
 
-    public  void addScore(View view) {
+    public void addScore(int amount) {
         Log.d("Notes: HomeActivity", "Putting score : ");
         SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("score", getScore() + 5);
-        editor.commit();
-        Log.d("Notes: HomeActivity", "Checking score : " + getScore());
-        TextView t = (TextView) findViewById(R.id.tv_score);
-        t.setText("Score : " + getScore());
+        editor.putInt("score", getScore() + amount);
+        editor.apply();
     }
 }
