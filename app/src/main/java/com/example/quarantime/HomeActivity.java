@@ -1,7 +1,6 @@
 package com.example.quarantime;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -13,21 +12,15 @@ import android.content.Intent;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.quarantime.ui.dashboard.DashboardFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
-    private static int id = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +56,7 @@ public class HomeActivity extends AppCompatActivity {
             Log.d("Notes: HomeActivity", "creating fragment: ");
             DashboardFragment dashboard = new DashboardFragment();
             Log.d("Notes: HomeActivity", "drawing fragment: ");
-            RecyclerView r = (RecyclerView) findViewById(R.id.recView);
+            RecyclerView r = findViewById(R.id.recView);
             dashboard.updateTasksView(r, taskDB);
             Log.d("Notes: HomeActivity", "done with fragment: ");
         }
@@ -87,15 +80,11 @@ public class HomeActivity extends AppCompatActivity {
         Log.d("Notes: HomeActivity", "creating fragment: ");
         DashboardFragment dashboard = new DashboardFragment();
         Log.d("Notes: HomeActivity", "drawing fragment: ");
-        RecyclerView r = (RecyclerView) findViewById(R.id.recView);
+        RecyclerView r = findViewById(R.id.recView);
         dashboard.updateTasksView(r, taskDB);
         Log.d("Notes: HomeActivity", "done with fragment: ");
     }
 
-    public void showScore(View view) {
-        TextView tv_score = (TextView)findViewById(R.id.tv_score);
-        tv_score.setText(""+getScore());
-    }
 
     public int getScore() {
         int score = 0;
@@ -107,11 +96,6 @@ public class HomeActivity extends AppCompatActivity {
             Log.d("Notes: HomeActivity", "Getting score : " + 0 + " (zero)");
         }
         return score;
-    }
-
-    public void getScore(View view) {
-        TextView t = (TextView) findViewById(R.id.tv_score);
-        t.setText("Score : " + getScore());
     }
 
     public void addScore(int amount) {

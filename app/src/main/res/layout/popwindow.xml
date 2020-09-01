@@ -51,9 +51,10 @@
         android:ems="12"
         android:hint="@string/due_date"
         android:importantForAutofill="no"
-        android:drawableLeft="@drawable/ic_calendar"
         android:padding="10dp"
-        android:onClick="showDatePickerDialog"/>
+        android:onClick="showDatePickerDialog"
+        android:drawableLeft="@drawable/ic_calendar"
+        android:drawableStart="@drawable/ic_calendar" />
 
     <FrameLayout
         android:layout_width="125dp"

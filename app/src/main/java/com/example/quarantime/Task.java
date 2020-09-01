@@ -80,8 +80,8 @@ public class Task {
         if (time != null)
             return this.time;
 
-        // SimpleDateFormat d = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        SimpleDateFormat d = new SimpleDateFormat("yyyy-mm-dd");
+        // SimpleDateFormat d = new SimpleDateFormat("dd/mm/yyyy hh:mm:ss");
+        SimpleDateFormat d = new SimpleDateFormat("dd/mm/yyyy");
         this.time = d.parse(timeStr);
         return time;
     }
@@ -90,8 +90,8 @@ public class Task {
     }
     public String getStringTime(){
         if (this.time == null) return "";
-        // DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        // DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy hh:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
         return dateFormat.format(this.time);
 
     }
