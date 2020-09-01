@@ -53,8 +53,8 @@ public class TaskDBHandler extends SQLiteOpenHelper {
             int result_0 = cursor.getInt(0);
             String result_1 = cursor.getString(1);
             String result_2 = cursor.getString(2);
-            result += String.valueOf(result_0) + " " + result_1 + " " + result_2 +
-                    System.getProperty("line.separator");
+            result += (result_0 + " " + result_1 + " " + result_2 +
+                    System.getProperty("line.separator"));
         }
         cursor.close();
         db.close();
@@ -100,8 +100,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
     }
 
     public Task deleteHandler(int ID) {
-        boolean result = false;
-        String query = "Select * FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = " + String.valueOf(ID);
+        String query = "Select * FROM " + TABLE_NAME + " WHERE " + COLUMN_ID + " = " + ID;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
         Task task = null;
@@ -111,7 +110,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
             String desc = cursor.getString(2);
             String time = cursor.getString(3);
             double duration = cursor.getDouble(4);
-            String status = cursor.getString(5);
+            // String status = cursor.getString(5);
             String remind = cursor.getString(6);
             String category = cursor.getString(7);
             int score = cursor.getInt(8);
@@ -126,7 +125,6 @@ public class TaskDBHandler extends SQLiteOpenHelper {
                             String.valueOf(Integer.parseInt(cursor.getString(0)))
                     });
             cursor.close();
-            result = true;
         }
         db.close();
         return task;
@@ -170,7 +168,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
             String desc = cursor.getString(2);
             String time = cursor.getString(3);
             double duration = cursor.getDouble(4);
-            String status = cursor.getString(5);
+            // String status = cursor.getString(5);
             String remind = cursor.getString(6);
             String category = cursor.getString(7);
             int score = cursor.getInt(8);

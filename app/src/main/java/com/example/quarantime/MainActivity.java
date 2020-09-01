@@ -8,7 +8,6 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private static int SPLASH_TIME_OUT = 3000;
     public static int score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
         //setContentView(R.layout.activity_main);
         Log.d("Notes: MainActivity", "set content view");
+
+        int SPLASH_TIME_OUT = 3000;
 
         new Handler().postDelayed(new Runnable(){
             @Override

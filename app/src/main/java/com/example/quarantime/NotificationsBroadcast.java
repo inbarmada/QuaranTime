@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 
-import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -59,7 +58,7 @@ public class NotificationsBroadcast extends BroadcastReceiver {
         Intent intent = new Intent(c,NotificationsBroadcast.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(c, 0, intent, 0);
 
-        AlarmManager alarmManager = (AlarmManager)c.getSystemService(c.ALARM_SERVICE);
+        AlarmManager alarmManager = (AlarmManager)c.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMiliseconds, pendingIntent);
     }
 

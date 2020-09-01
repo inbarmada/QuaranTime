@@ -2,11 +2,10 @@ package com.example.quarantime;
 
 import android.util.Log;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
 public class Task {
     private int id;
@@ -20,9 +19,6 @@ public class Task {
     private String category; //Maybe in the future have a set (array) of categories, and pick one (an index) from them?
     private int score;
 
-    public Task() {
-        System.out.println("ohno");
-    }
     public Task(int id, String name, String desc, String time, double duration, boolean reminder, String category, int score) {
         Log.d("task", "create task");
         this.id = id;
@@ -81,19 +77,12 @@ public class Task {
             return this.time;
 
         // SimpleDateFormat d = new SimpleDateFormat("dd/mm/yyyy hh:mm:ss");
-        SimpleDateFormat d = new SimpleDateFormat("dd/mm/yyyy");
+        SimpleDateFormat d = new SimpleDateFormat("dd/mm/yyyy", Locale.US);
         this.time = d.parse(timeStr);
         return time;
     }
     public String getTimeStr() {
         return timeStr;
-    }
-    public String getStringTime(){
-        if (this.time == null) return "";
-        // DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy hh:mm:ss");
-        DateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy");
-        return dateFormat.format(this.time);
-
     }
     public double getDuration() {
         return this.duration;

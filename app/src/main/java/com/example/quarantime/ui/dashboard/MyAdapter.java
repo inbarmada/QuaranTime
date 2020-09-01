@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.quarantime.R;
 import com.example.quarantime.Task;
 
-import java.text.ParseException;
+import org.jetbrains.annotations.NotNull;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private Task[] mDataset;
@@ -48,6 +48,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     // Create new views (invoked by the layout manager)
+    @NotNull
     @Override
     public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
                                                      int viewType) {
@@ -61,8 +62,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         Log.d("Notes: MyAdapter", "oncreateviewholder created textview");
 
-        MyViewHolder vh = new MyViewHolder(v);
-        return vh;
+        return new MyViewHolder(v);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -71,11 +71,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         Log.d("Notes: DashFragment", "onBindViewHolder");
-        holder.taskID.setText(mDataset[position].getID() + "");
+        String idText = mDataset[position].getID() + "";
+        holder.taskID.setText(idText);
         holder.checkBox.setText(mDataset[position].getName());
-        holder.dateView.setText("Due: " + mDataset[position].getTimeStr());
+        String timestr = "Due: " + mDataset[position].getTimeStr();
+        holder.dateView.setText(timestr);
         holder.descView.setText(mDataset[position].getDesc());
-        holder.scoreView.setText("Score: " + mDataset[position].getScore());
+        String scr = "Score: " + mDataset[position].getScore();
+        holder.scoreView.setText(scr);
         int drawable_color = R.drawable.solid_red_box;
         if (position % 4 == 0) {
             holder.card.setBackgroundResource(R.drawable.box_outline_blue);
