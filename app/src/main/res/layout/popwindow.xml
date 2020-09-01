@@ -2,7 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkBlue" >
+    android:background="@drawable/add_task_pop_up" >
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="201dp"
+        android:layout_marginLeft="201dp"
+        android:layout_marginBottom="23dp"
+        android:background="@drawable/rounded_edittext"
+        android:onClick="addTaskButton"
+        android:text="@string/save"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/taskNameET"
@@ -13,32 +28,14 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginBottom="472dp"
+        android:layout_marginBottom="364dp"
         android:background="@drawable/rounded_edittext"
         android:hint="@string/task_title"
+        android:importantForAutofill="no"
         android:inputType="text"
         android:padding="10dp"
         android:text=""
-        android:textSize="18sp"
-        android:importantForAutofill="no" />
-
-    <EditText
-        android:id="@+id/taskDescET"
-        android:layout_width="265dp"
-        android:layout_height="100dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginBottom="345dp"
-        android:background="@drawable/rounded_edittext_green"
-        android:gravity="top"
-        android:hint="@string/description"
-        android:inputType="textMultiLine"
-        android:padding="10dp"
-        android:textSize="14sp"
-        android:importantForAutofill="no" />
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/taskDateET"
@@ -49,16 +46,15 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginBottom="276dp"
+        android:layout_marginBottom="170dp"
         android:background="@drawable/rounded_edittext_yellow"
         android:ems="12"
         android:hint="@string/due_date"
+        android:importantForAutofill="no"
         android:inputType="date"
-        android:padding="10dp"
-        android:importantForAutofill="no" />
+        android:padding="10dp" />
 
     <FrameLayout
-        android:background="@drawable/rounded_edittext_yellow"
         android:layout_width="125dp"
         android:layout_height="43dp"
         android:layout_alignParentStart="true"
@@ -66,15 +62,33 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="165dp"
         android:layout_marginLeft="165dp"
-        android:layout_marginBottom="277dp">
+        android:layout_marginBottom="171dp"
+        android:background="@drawable/rounded_edittext_yellow">
 
         <Spinner
             android:id="@+id/taskCatSP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:ems="12" />
+            android:ems="12"
+            android:padding="10dp" />
     </FrameLayout>
+
+    <EditText
+        android:id="@+id/taskScoreET"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="165dp"
+        android:layout_marginLeft="165dp"
+        android:layout_marginBottom="98dp"
+        android:background="@drawable/rounded_edittext_red"
+        android:ems="12"
+        android:hint="@string/score"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        android:padding="10dp" />
 
     <EditText
         android:id="@+id/taskDurET"
@@ -87,46 +101,14 @@
         android:layout_marginLeft="25dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
-        android:layout_marginBottom="204dp"
+        android:layout_marginBottom="98dp"
         android:background="@drawable/rounded_edittext_red"
         android:ems="12"
         android:hint="@string/duration"
+        android:importantForAutofill="no"
         android:inputType="number"
         android:padding="10dp"
-        android:text=""
-        android:importantForAutofill="no" />
-
-    <EditText
-        android:id="@+id/taskScoreET"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="165dp"
-        android:layout_marginLeft="165dp"
-        android:layout_marginBottom="204dp"
-        android:background="@drawable/rounded_edittext_red"
-        android:ems="12"
-        android:hint="@string/score"
-        android:inputType="number"
-        android:padding="10dp"
-        android:importantForAutofill="no" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="201dp"
-        android:layout_marginLeft="201dp"
-        android:layout_marginBottom="130dp"
-        android:background="@drawable/rounded_edittext"
-        android:onClick="addTaskButton"
-        android:text="@string/save"
-        android:textSize="20sp" />
+        android:text="" />
 
     <CheckBox
         android:id="@+id/taskRemCB"
@@ -137,9 +119,27 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/rounded_edittext"
         android:padding="10dp"
         android:text="@string/reminder" />
+
+    <EditText
+        android:id="@+id/taskDescET"
+        android:layout_width="265dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginBottom="239dp"
+        android:background="@drawable/rounded_edittext_green"
+        android:gravity="top"
+        android:hint="@string/description"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:padding="10dp"
+        android:textSize="14sp" />
 
 </RelativeLayout>
