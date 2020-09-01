@@ -37,7 +37,7 @@
         android:text=""
         android:textSize="18sp" />
 
-    <EditText
+    <Button
         android:id="@+id/taskDateET"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
@@ -51,18 +51,19 @@
         android:ems="12"
         android:hint="@string/due_date"
         android:importantForAutofill="no"
-        android:inputType="date"
-        android:padding="10dp" />
+        android:drawableLeft="@drawable/ic_calendar"
+        android:padding="10dp"
+        android:onClick="showDatePickerDialog"/>
 
     <FrameLayout
         android:layout_width="125dp"
-        android:layout_height="43dp"
+        android:layout_height="48dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="165dp"
         android:layout_marginLeft="165dp"
-        android:layout_marginBottom="171dp"
+        android:layout_marginBottom="170dp"
         android:background="@drawable/rounded_edittext_yellow">
 
         <Spinner

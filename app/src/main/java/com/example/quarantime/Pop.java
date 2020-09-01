@@ -1,6 +1,8 @@
 package com.example.quarantime;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -10,16 +12,20 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quarantime.ui.dashboard.DashboardFragment;
 
 import java.text.ParseException;
+import java.util.Calendar;
 
 
 public class Pop extends Activity {
@@ -53,7 +59,7 @@ public class Pop extends Activity {
         TaskDBHandler dbHandler = new TaskDBHandler(this, null);
         String name = ((EditText)findViewById(R.id.taskNameET)).getText().toString();
         String desc = ((EditText)findViewById(R.id.taskDescET)).getText().toString();
-        String date = ((EditText)findViewById(R.id.taskDateET)).getText().toString();
+        String date = ((Button)findViewById(R.id.taskDateET)).getText().toString();
         double duration = Double.parseDouble(((EditText)findViewById(R.id.taskDurET)).getText().toString());
         String cat = ((Spinner)findViewById(R.id.taskCatSP)).getSelectedItem().toString();
         boolean rem = ((CheckBox)findViewById(R.id.taskRemCB)).isChecked();
@@ -67,6 +73,42 @@ public class Pop extends Activity {
         i.putExtra("result_code", 1);
         setResult(2,i);
         finish();
+    }
+
+
+//    public static class DatePickerFragment extends DialogFragment
+//            implements DatePickerDialog.OnDateSetListener {
+//
+//        @Override
+//        public Dialog onCreateDialog(Bundle savedInstanceState) {
+//            // Use the current date as the default date in the picker
+//            final Calendar c = Calendar.getInstance();
+//            int year = c.get(Calendar.YEAR);
+//            int month = c.get(Calendar.MONTH);
+//            int day = c.get(Calendar.DAY_OF_MONTH);
+//
+//            // Create a new instance of DatePickerDialog and return it
+//            return new DatePickerDialog(getActivity(), this, year, month, day);
+//        }
+//
+//        public void onDateSet(DatePicker view, int year, int month, int day) {
+//            // Do something with the date chosen by the user
+//        }
+//    }
+    public void showDatePickerDialog(View view) {
+        Calendar c = Calendar.getInstance();
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        int month = c.get(Calendar.MONTH);
+        int year = c.get(Calendar.YEAR);
+        DatePickerDialog dpd = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day){
+                Button date = (Button) findViewById(R.id.taskDateET);
+                date.setText(day + "/" + (month + 1) + "/" + year);
+            }
+        }, day, month, year);
+        dpd.show();
+
     }
 
 }
