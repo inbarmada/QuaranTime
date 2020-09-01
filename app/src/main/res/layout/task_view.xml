@@ -8,25 +8,90 @@
     android:layout_height="100dp"
     android:layout_margin="5dp" >
 
-    <TextView
-        android:id="@+id/taskID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:visibility="invisible"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="258dp"
-        android:layout_height="wrap_content"
-        android:text="CheckBox"
-        android:onClick="taskCompleted"
-         />
+        <TextView
+            android:id="@+id/taskID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:visibility="invisible"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/taskDesc"
-        android:layout_width="102dp"
-        android:layout_height="62dp"
-        android:text="TextView"
-        android:layout_gravity="bottom" />
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="215dp"
+            android:layout_height="30dp"
+            android:onClick="taskCompleted"
+            android:text="Title"
+            card_view:layout_constraintBottom_toBottomOf="@+id/taskDesc"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.0"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/taskDate"
+            android:layout_width="125dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:text="Date"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="1.0"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintVertical_bias="0.0"
+            android:paddingStart="7dp"
+            android:paddingLeft="7dp"
+            android:paddingEnd="7dp"
+            android:paddingRight="7dp"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"/>
+
+        <TextView
+            android:id="@+id/taskDesc"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:text="TextView"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.0"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintVertical_bias="1.0"
+            android:padding="3dp"
+            android:paddingStart="7dp"
+            android:paddingLeft="7dp"
+            android:paddingEnd="7dp"
+            android:paddingRight="7dp"/>
+
+        <TextView
+            android:id="@+id/taskScore"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:text="Score"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="1.0"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintVertical_bias="1.0"
+            android:paddingStart="7dp"
+            android:paddingLeft="7dp"
+            android:paddingEnd="7dp"
+            android:paddingRight="7dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>

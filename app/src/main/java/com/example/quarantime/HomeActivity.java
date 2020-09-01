@@ -2,6 +2,7 @@ package com.example.quarantime;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -73,8 +74,8 @@ public class HomeActivity extends AppCompatActivity {
     public void taskCompleted(View view) {
         Log.d("Notes: HomeActivity", "taskCompleted");
         CheckBox c = (CheckBox) view;
-        CardView card = (CardView) view.getParent();
-        TextView id = (TextView) card.getChildAt(0);
+        ConstraintLayout constLay = (ConstraintLayout) view.getParent();
+        TextView id = (TextView) constLay.getChildAt(0);
         Log.d("Notes: HomeActivity", "taskCompleted: " + c.getText());
         Log.d("Notes: HomeActivity", "taskCompleted: " + id.getText());
         // Get database

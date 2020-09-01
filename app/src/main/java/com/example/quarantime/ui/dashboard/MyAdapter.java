@@ -7,10 +7,13 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quarantime.R;
 import com.example.quarantime.Task;
+
+import java.text.ParseException;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private Task[] mDataset;
@@ -20,14 +23,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     // you provide access to all the views for a data item in a view holder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView textView;
+        public TextView descView;
         public TextView taskID;
+        public TextView dateView;
+        public TextView scoreView;
         public CheckBox checkBox;
+        public CardView card;
         public MyViewHolder(CardView v) {
             super(v);
-            taskID = (TextView)v.getChildAt(0);
-            checkBox = (CheckBox)v.getChildAt(1);
-            textView = (TextView)v.getChildAt(2);
+            card = v;
+            ConstraintLayout constlayout = (ConstraintLayout)v.getChildAt(0);
+            taskID = (TextView)constlayout.getChildAt(0);
+            checkBox = (CheckBox)constlayout.getChildAt(1);
+            dateView = (TextView)constlayout.getChildAt(2);
+            descView = (TextView)constlayout.getChildAt(3);
+            scoreView = (TextView)constlayout.getChildAt(4);
         }
     }
 
@@ -63,7 +73,28 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         Log.d("Notes: DashFragment", "onBindViewHolder");
         holder.taskID.setText(mDataset[position].getID() + "");
         holder.checkBox.setText(mDataset[position].getName());
-        holder.textView.setText(mDataset[position].getDesc());
+        holder.dateView.setText("Due: " + mDataset[position].getTimeStr());
+        holder.descView.setText(mDataset[position].getDesc());
+        holder.scoreView.setText("Score: " + mDataset[position].getScore());
+        int drawable_color = R.drawable.solid_red_box;
+        if (position % 4 == 0) {
+            holder.card.setBackgroundResource(R.drawable.box_outline_blue);
+            drawable_color = R.drawable.solid_blue_box;
+        } else if (position % 4 == 1) {
+            holder.card.setBackgroundResource(R.drawable.box_outline_green);
+            drawable_color = R.drawable.solid_green_box;
+        } else if (position % 4 == 2) {
+            holder.card.setBackgroundResource(R.drawable.box_outline_yellow);
+            drawable_color = R.drawable.solid_yellow_box;
+        } else {
+            holder.card.setBackgroundResource(R.drawable.box_outline_red);
+        }
+        holder.checkBox.setBackgroundResource(drawable_color);
+        holder.dateView.setBackgroundResource(drawable_color);
+        holder.descView.setBackgroundResource(drawable_color);
+        holder.scoreView.setBackgroundResource(drawable_color);
+
+
         Log.d("Notes: DashFragment", "onBindViewHolder done");
     }
 

@@ -46,7 +46,6 @@ public class Pop extends Activity {
     }
 
 
-
     public void addTaskButton(View view) throws ParseException {
 
         Log.d("Notes: pop", "adding task");

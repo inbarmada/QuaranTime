@@ -18,4 +18,5 @@
     <string name="save">Save</string>
     <string name="reminder">Reminder</string>
     <string name="category">Category</string>
+    <string name="score_label">Score: </string>
 </resources>
