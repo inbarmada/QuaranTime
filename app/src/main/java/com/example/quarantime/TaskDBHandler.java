@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.util.Log;
+import java.sql.Date;
+import java.text.ParseException;
 
 public class TaskDBHandler extends SQLiteOpenHelper {
     //information of database
@@ -32,7 +34,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + COLUMN_ID +
                 " INTEGER PRIMARY KEY, " + COLUMN_NAME + " TEXT, " + COLUMN_DESC + " TEXT, " +
-                COLUMN_TIME + " TEXT, " + COLUMN_DUR + " DOUBLE, " + COLUMN_STATUS + " TEXT, " + COLUMN_REMIND + " TEXT, " +
+                COLUMN_TIME + " DATE, " + COLUMN_DUR + " DOUBLE, " + COLUMN_STATUS + " TEXT, " + COLUMN_REMIND + " TEXT, " +
                 COLUMN_CATEGORY + " TEXT, " + COLUMN_SCORE + " INTEGER)";
         db.execSQL(CREATE_TABLE);
     }
@@ -59,7 +61,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         return result;
     }
 
-    public void addHandler(Task task) {
+    public void addHandler(Task task) throws ParseException {
         Log.d("Notes: taskdbhandler", "add handler");
 
         ContentValues values = new ContentValues();
@@ -71,7 +73,10 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         Log.d("Notes: taskdbhandler", "2");
         values.put(COLUMN_DESC, task.getDesc());
         Log.d("Notes: taskdbhandler", "3");
-        values.put(COLUMN_TIME, task.getStringTime());
+        java.util.Date date = task.getTime();
+
+        java.sql.Date sqlDate = new Date(date.getTime());
+        values.put(COLUMN_TIME, String.valueOf(sqlDate));
         Log.d("Notes: taskdbhandler", "3.5");
         values.put(COLUMN_DUR, task.getDuration());
         Log.d("Notes: taskdbhandler", "4");
@@ -145,7 +150,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
     public Task[] getTasks() {
         Log.d("Notes: taskdbhandler", "load handler");
 
-        String query = "Select * FROM " + TABLE_NAME;
+        String query = "Select * FROM " + TABLE_NAME + " ORDER BY " + COLUMN_TIME;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
 

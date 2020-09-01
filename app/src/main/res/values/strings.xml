@@ -5,8 +5,17 @@
     <string name="title_notifications">Score</string>
     <string name="testNotification">Score</string>
     <string-array name="categories_array">
+        <item>Category</item>
         <item>Work</item>
         <item>Home</item>
         <item>Fun</item>
     </string-array>
+    <string name="task_title">Task Title</string>
+    <string name="description">Description</string>
+    <string name="due_date">Due Date</string>
+    <string name="duration">Duration</string>
+    <string name="score">Score</string>
+    <string name="save">Save</string>
+    <string name="reminder">Reminder</string>
+    <string name="category">Category</string>
 </resources>

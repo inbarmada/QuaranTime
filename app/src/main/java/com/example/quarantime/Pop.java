@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quarantime.ui.dashboard.DashboardFragment;
 
+import java.text.ParseException;
+
 
 public class Pop extends Activity {
     @Override
@@ -45,7 +47,7 @@ public class Pop extends Activity {
 
 
 
-    public void addTaskButton(View view) {
+    public void addTaskButton(View view) throws ParseException {
 
         Log.d("Notes: pop", "adding task");
 

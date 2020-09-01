@@ -3,11 +3,14 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="darkBlue">#4267CA</color>
-    <color name="medBlue">#88A2E6</color>
-    <color name="lightBlue">#B3C5F3</color>
+    <color name="darkBlue">#0b5394</color>
+    <color name="medBlue">#6fa8dc</color>
+    <color name="lightBlue">#cfe2f3</color>
     <color name="lightOrange">#FFD695</color>
     <color name="medOrange">#DE7E12</color>
     <color name="white">#FFFFFF</color>
     <color name="red">#FF0000</color>
+    <color name="softred">#ffcd99</color>
+    <color name="green">#96f7a2</color>
+    <color name="yellow">#ffd776</color>
 </resources>
