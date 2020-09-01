@@ -57,8 +57,7 @@
         android:padding="10dp"
         android:importantForAutofill="no" />
 
-    <Spinner
-        android:id="@+id/taskCatSP"
+    <FrameLayout
         android:background="@drawable/rounded_edittext_yellow"
         android:layout_width="125dp"
         android:layout_height="43dp"
@@ -67,8 +66,15 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="165dp"
         android:layout_marginLeft="165dp"
-        android:layout_marginBottom="277dp"
-        android:ems="12" />
+        android:layout_marginBottom="277dp">
+
+        <Spinner
+            android:id="@+id/taskCatSP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:ems="12" />
+    </FrameLayout>
 
     <EditText
         android:id="@+id/taskDurET"
