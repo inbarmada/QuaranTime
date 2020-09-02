@@ -4,6 +4,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -27,14 +29,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public TextView taskID;
         public TextView dateView;
         public TextView scoreView;
+        public TextView titleView;
         public CheckBox checkBox;
+        public RelativeLayout titleHolder;
         public CardView card;
         public MyViewHolder(CardView v) {
             super(v);
             card = v;
             ConstraintLayout constlayout = (ConstraintLayout)v.getChildAt(0);
             taskID = (TextView)constlayout.getChildAt(0);
-            checkBox = (CheckBox)constlayout.getChildAt(1);
+            titleHolder = (RelativeLayout)constlayout.getChildAt(1);
+            checkBox = (CheckBox)(titleHolder).getChildAt(0);
+            titleView = (TextView) ((RelativeLayout)constlayout.getChildAt(1)).getChildAt(1);
             dateView = (TextView)constlayout.getChildAt(2);
             descView = (TextView)constlayout.getChildAt(3);
             scoreView = (TextView)constlayout.getChildAt(4);
@@ -73,7 +79,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         Log.d("Notes: DashFragment", "onBindViewHolder");
         String idText = mDataset[position].getID() + "";
         holder.taskID.setText(idText);
-        holder.checkBox.setText(mDataset[position].getName());
+        holder.titleView.setText(mDataset[position].getName());
         String timestr = "Due: " + mDataset[position].getTimeStr();
         holder.dateView.setText(timestr);
         holder.descView.setText(mDataset[position].getDesc());
@@ -92,7 +98,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         } else {
             holder.card.setBackgroundResource(R.drawable.box_outline_red);
         }
-        holder.checkBox.setBackgroundResource(drawable_color);
+        holder.titleHolder.setBackgroundResource(drawable_color);
         holder.dateView.setBackgroundResource(drawable_color);
         holder.descView.setBackgroundResource(drawable_color);
         holder.scoreView.setBackgroundResource(drawable_color);
