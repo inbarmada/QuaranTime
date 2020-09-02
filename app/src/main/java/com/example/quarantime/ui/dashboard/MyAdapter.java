@@ -49,10 +49,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             dateView = (EditText)taskTop.getChildAt(1);
             LinearLayout taskBottom = (LinearLayout)constlayout.getChildAt(2);
             descView = (EditText)taskBottom.getChildAt(0);
-            LinearLayout bottomLeft = (LinearLayout) taskBottom.getChildAt(1);
-            scoreView = (EditText)bottomLeft.getChildAt(0);
-            durView = (EditText)bottomLeft.getChildAt(1);
-            catView = (EditText)bottomLeft.getChildAt(2);
+            LinearLayout bottomRight = (LinearLayout) taskBottom.getChildAt(1);
+            scoreView = (EditText)bottomRight.getChildAt(0);
+            durView = (EditText)bottomRight.getChildAt(1);
+            catView = (EditText)bottomRight.getChildAt(2);
         }
     }
 

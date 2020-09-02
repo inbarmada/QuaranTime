@@ -187,6 +187,7 @@
 
                 <Button
                     android:id="@+id/taskEdit"
+                    android:onClick="editTask"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:layout_gravity="bottom"
@@ -197,7 +198,7 @@
                     android:paddingEnd="7dp"
                     android:paddingRight="7dp"
                     android:paddingBottom="10dp"
-                    android:text="edit"
+                    android:text="@string/edit"
                     android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>

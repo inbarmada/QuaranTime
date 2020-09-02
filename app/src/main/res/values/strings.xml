@@ -19,4 +19,6 @@
     <string name="reminder">Reminder</string>
     <string name="category">Category</string>
     <string name="score_label">Score: </string>
+    <string name="done">DONE</string>
+    <string name="edit">EDIT</string>
 </resources>

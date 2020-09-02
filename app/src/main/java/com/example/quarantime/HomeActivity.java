@@ -116,7 +116,6 @@ public class HomeActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void cardClicked(View view) {
         Log.d("Notes: HomeActivity", "cardClicked");
         ConstraintLayout constlayout = (ConstraintLayout)((CardView)view).getChildAt(0);
@@ -134,7 +133,7 @@ public class HomeActivity extends AppCompatActivity {
             durView.setVisibility(View.VISIBLE);
             catView.setVisibility(View.VISIBLE);
             editButton.setVisibility(View.VISIBLE);
-            expand_is_on.setText("expanded");
+            expand_is_on.setText("1");
         } else {
             Log.d("Notes: HomeActivity", "expanded");
             durView.setVisibility(View.GONE);
@@ -142,7 +141,40 @@ public class HomeActivity extends AppCompatActivity {
             editButton.setVisibility(View.GONE);
             expand_is_on.setText("");
         }
+    }
 
+    public void editTask(View view) {
+        ConstraintLayout constlayout = (ConstraintLayout)view.getParent().getParent().getParent();
+        LinearLayout taskTop = (LinearLayout)constlayout.getChildAt(1);
+        LinearLayout titleHolder = (LinearLayout)taskTop.getChildAt(0);
+        LinearLayout bottomTask = (LinearLayout)constlayout.getChildAt(2);
+        LinearLayout bottomRight = (LinearLayout)bottomTask.getChildAt(1);
 
+        EditText titleView = (EditText) (titleHolder).getChildAt(1);
+        EditText dateView = (EditText)taskTop.getChildAt(1);
+        EditText descView = (EditText)bottomTask.getChildAt(0);
+        EditText scoreView = (EditText)bottomRight.getChildAt(0);
+        EditText durView = (EditText)bottomRight.getChildAt(1);
+        EditText catView = (EditText)bottomRight.getChildAt(2);
+
+        Button editButton = (Button)bottomRight.getChildAt(3);
+
+        if (editButton.getText().equals("EDIT")) {
+            titleView.setEnabled(true);
+            dateView.setEnabled(true);
+            descView.setEnabled(true);
+            scoreView.setEnabled(true);
+            durView.setEnabled(true);
+            catView.setEnabled(true);
+            editButton.setText(R.string.done);
+        } else {
+            titleView.setEnabled(false);
+            dateView.setEnabled(false);
+            descView.setEnabled(false);
+            scoreView.setEnabled(false);
+            durView.setEnabled(false);
+            catView.setEnabled(false);
+            editButton.setText(R.string.edit);
+        }
     }
 }
