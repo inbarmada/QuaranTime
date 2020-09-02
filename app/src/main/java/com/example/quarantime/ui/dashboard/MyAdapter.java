@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -30,20 +31,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public TextView dateView;
         public TextView scoreView;
         public TextView titleView;
+        public TextView durView;
+        public TextView catView;
         public CheckBox checkBox;
-        public RelativeLayout titleHolder;
+        public LinearLayout titleHolder;
         public CardView card;
         public MyViewHolder(CardView v) {
             super(v);
             card = v;
             ConstraintLayout constlayout = (ConstraintLayout)v.getChildAt(0);
             taskID = (TextView)constlayout.getChildAt(0);
-            titleHolder = (RelativeLayout)constlayout.getChildAt(1);
+            LinearLayout taskTop = (LinearLayout)constlayout.getChildAt(1);
+            titleHolder = (LinearLayout)taskTop.getChildAt(0);
             checkBox = (CheckBox)(titleHolder).getChildAt(0);
-            titleView = (TextView) ((RelativeLayout)constlayout.getChildAt(1)).getChildAt(1);
-            dateView = (TextView)constlayout.getChildAt(2);
-            descView = (TextView)constlayout.getChildAt(3);
-            scoreView = (TextView)constlayout.getChildAt(4);
+            titleView = (TextView) (titleHolder).getChildAt(1);
+            dateView = (TextView)taskTop.getChildAt(1);
+            LinearLayout taskBottom = (LinearLayout)constlayout.getChildAt(2);
+            descView = (TextView)taskBottom.getChildAt(0);
+            LinearLayout bottomLeft = (LinearLayout) taskBottom.getChildAt(1);
+            scoreView = (TextView)bottomLeft.getChildAt(0);
+            durView = (TextView)bottomLeft.getChildAt(1);
+            catView = (TextView)bottomLeft.getChildAt(2);
         }
     }
 
@@ -85,6 +93,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.descView.setText(mDataset[position].getDesc());
         String scr = "Score: " + mDataset[position].getScore();
         holder.scoreView.setText(scr);
+        String dur = "Dur: " + mDataset[position].getDuration() + " min";
+        holder.durView.setText(dur);
+        String cat = "Cat: " + mDataset[position].getCategory();
+        holder.catView.setText(cat);
+
         int drawable_color = R.drawable.solid_red_box;
         if (position % 4 == 0) {
             holder.card.setBackgroundResource(R.drawable.box_outline_blue);
@@ -102,7 +115,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.dateView.setBackgroundResource(drawable_color);
         holder.descView.setBackgroundResource(drawable_color);
         holder.scoreView.setBackgroundResource(drawable_color);
-
+        holder.durView.setBackgroundResource(drawable_color);
+        holder.catView.setBackgroundResource(drawable_color);
 
         Log.d("Notes: DashFragment", "onBindViewHolder done");
     }
