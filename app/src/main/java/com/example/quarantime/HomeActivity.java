@@ -76,8 +76,8 @@ public class HomeActivity extends AppCompatActivity {
     public void taskCompleted(View view) {
         Log.d("Notes: HomeActivity", "taskCompleted");
         CheckBox c = (CheckBox) view;
-        ConstraintLayout constLay = (ConstraintLayout)((RelativeLayout)view.getParent()).getParent();
-        TextView id = (TextView) constLay.getChildAt(0);
+        ConstraintLayout constlayout = (ConstraintLayout)(c.getParent().getParent().getParent());
+        TextView id = (TextView) constlayout.getChildAt(0);
         Log.d("Notes: HomeActivity", "taskCompleted: " + c.getText());
         Log.d("Notes: HomeActivity", "taskCompleted: " + id.getText());
         // Get database
@@ -119,31 +119,29 @@ public class HomeActivity extends AppCompatActivity {
     public void cardClicked(View view) {
         Log.d("Notes: HomeActivity", "cardClicked");
         ConstraintLayout constlayout = (ConstraintLayout)((CardView)view).getChildAt(0);
+        TextView expand_is_on = (TextView)constlayout.getChildAt(3);
+
         LinearLayout bottomTask = (LinearLayout)constlayout.getChildAt(2);
         LinearLayout bottomRight = (LinearLayout)bottomTask.getChildAt(1);
         TextView durView = (TextView)bottomRight.getChildAt(1);
         TextView catView = (TextView)bottomRight.getChildAt(2);
         Button editButton = (Button)bottomRight.getChildAt(3);
-        durView.setVisibility(View.VISIBLE);
-        catView.setVisibility(View.VISIBLE);
-        editButton.setVisibility(View.VISIBLE);
-//        int mHeight = view.getHeight();
-//        view.setMinimumHeight(2 * mHeight);
-//        TextView descView = (TextView)constlayout.getChildAt(3);
-//        ViewGroup.LayoutParams params = descView.getLayoutParams();
-//        params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-//        descView.setLayoutParams(params);
-//        TextView durView = (TextView)constlayout.getChildAt(5);
-//        TextView catView = (TextView)constlayout.getChildAt(6);
-//        Button editButton = (Button)constlayout.getChildAt(7);
-//        durView.setVisibility(View.VISIBLE);
-//        catView.setVisibility(View.VISIBLE);
-//        editButton.setVisibility(View.VISIBLE);
-//
-//
-////        view.setTranslationZ(16);
-////        ObjectAnimator animation = ObjectAnimator.ofFloat(view, "scaleY", 2);
-////        animation.setDuration(100);
-////        animation.start();
+        Log.d("Notes: HomeActivity", "/" + expand_is_on.getText() + "/ msg");
+        if (expand_is_on.getText().equals("")) {
+            Log.d("Notes: HomeActivity", "not expanded");
+
+            durView.setVisibility(View.VISIBLE);
+            catView.setVisibility(View.VISIBLE);
+            editButton.setVisibility(View.VISIBLE);
+            expand_is_on.setText("expanded");
+        } else {
+            Log.d("Notes: HomeActivity", "expanded");
+            durView.setVisibility(View.GONE);
+            catView.setVisibility(View.GONE);
+            editButton.setVisibility(View.GONE);
+            expand_is_on.setText("");
+        }
+
+
     }
 }
