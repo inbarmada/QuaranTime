@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -26,13 +27,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     // you provide access to all the views for a data item in a view holder
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView descView;
+        public EditText descView;
         public TextView taskID;
-        public TextView dateView;
-        public TextView scoreView;
-        public TextView titleView;
-        public TextView durView;
-        public TextView catView;
+        public EditText dateView;
+        public EditText scoreView;
+        public EditText titleView;
+        public EditText durView;
+        public EditText catView;
         public CheckBox checkBox;
         public LinearLayout titleHolder;
         public CardView card;
@@ -44,14 +45,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             LinearLayout taskTop = (LinearLayout)constlayout.getChildAt(1);
             titleHolder = (LinearLayout)taskTop.getChildAt(0);
             checkBox = (CheckBox)(titleHolder).getChildAt(0);
-            titleView = (TextView) (titleHolder).getChildAt(1);
-            dateView = (TextView)taskTop.getChildAt(1);
+            titleView = (EditText) (titleHolder).getChildAt(1);
+            dateView = (EditText)taskTop.getChildAt(1);
             LinearLayout taskBottom = (LinearLayout)constlayout.getChildAt(2);
-            descView = (TextView)taskBottom.getChildAt(0);
+            descView = (EditText)taskBottom.getChildAt(0);
             LinearLayout bottomLeft = (LinearLayout) taskBottom.getChildAt(1);
-            scoreView = (TextView)bottomLeft.getChildAt(0);
-            durView = (TextView)bottomLeft.getChildAt(1);
-            catView = (TextView)bottomLeft.getChildAt(2);
+            scoreView = (EditText)bottomLeft.getChildAt(0);
+            durView = (EditText)bottomLeft.getChildAt(1);
+            catView = (EditText)bottomLeft.getChildAt(2);
         }
     }
 

@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -123,8 +124,8 @@ public class HomeActivity extends AppCompatActivity {
 
         LinearLayout bottomTask = (LinearLayout)constlayout.getChildAt(2);
         LinearLayout bottomRight = (LinearLayout)bottomTask.getChildAt(1);
-        TextView durView = (TextView)bottomRight.getChildAt(1);
-        TextView catView = (TextView)bottomRight.getChildAt(2);
+        EditText durView = (EditText)bottomRight.getChildAt(1);
+        EditText catView = (EditText)bottomRight.getChildAt(2);
         Button editButton = (Button)bottomRight.getChildAt(3);
         Log.d("Notes: HomeActivity", "/" + expand_is_on.getText() + "/ msg");
         if (expand_is_on.getText().equals("")) {
