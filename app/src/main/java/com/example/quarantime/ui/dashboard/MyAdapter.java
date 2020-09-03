@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -33,7 +34,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         public EditText scoreView;
         public EditText titleView;
         public EditText durView;
-        public EditText catView;
+        public Spinner catView;
         public CheckBox checkBox;
         public LinearLayout titleHolder;
         public CardView card;
@@ -50,9 +51,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             LinearLayout taskBottom = (LinearLayout)constlayout.getChildAt(2);
             descView = (EditText)taskBottom.getChildAt(0);
             LinearLayout bottomRight = (LinearLayout) taskBottom.getChildAt(1);
-            scoreView = (EditText)bottomRight.getChildAt(0);
-            durView = (EditText)bottomRight.getChildAt(1);
-            catView = (EditText)bottomRight.getChildAt(2);
+            scoreView = (EditText)((LinearLayout)bottomRight.getChildAt(0)).getChildAt(1);
+            durView = (EditText)((LinearLayout)bottomRight.getChildAt(1)).getChildAt(1);
+            catView = (Spinner)((FrameLayout)bottomRight.getChildAt(2)).getChildAt(0);
         }
     }
 
@@ -92,12 +93,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         String timestr = "Due: " + mDataset[position].getTimeStr();
         holder.dateView.setText(timestr);
         holder.descView.setText(mDataset[position].getDesc());
-        String scr = "Score: " + mDataset[position].getScore();
+        String scr = mDataset[position].getScore() + "";
         holder.scoreView.setText(scr);
-        String dur = "Dur: " + mDataset[position].getDuration() + " min";
+        String dur = mDataset[position].getDuration() + "";
         holder.durView.setText(dur);
         String cat = "Cat: " + mDataset[position].getCategory();
-        holder.catView.setText(cat);
+        holder.catView.setSelection(0);
 
         int drawable_color = R.drawable.solid_red_box;
         if (position % 4 == 0) {
@@ -115,9 +116,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.titleHolder.setBackgroundResource(drawable_color);
         holder.dateView.setBackgroundResource(drawable_color);
         holder.descView.setBackgroundResource(drawable_color);
-        holder.scoreView.setBackgroundResource(drawable_color);
-        holder.durView.setBackgroundResource(drawable_color);
-        holder.catView.setBackgroundResource(drawable_color);
+        ((LinearLayout)holder.scoreView.getParent()).setBackgroundResource(drawable_color);
+        ((LinearLayout)holder.durView.getParent()).setBackgroundResource(drawable_color);
+        ((FrameLayout)holder.catView.getParent()).setBackgroundResource(drawable_color);
 
         Log.d("Notes: DashFragment", "onBindViewHolder done");
     }

@@ -129,44 +129,70 @@
                 android:layout_marginEnd="10dp"
                 android:orientation="vertical" >
 
-                <EditText
-                    android:id="@+id/taskScore"
+                <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:layout_gravity="bottom"
                     android:layout_marginTop="5dp"
                     android:paddingStart="7dp"
                     android:paddingLeft="7dp"
-                    android:paddingTop="10dp"
                     android:paddingEnd="7dp"
                     android:paddingRight="7dp"
-                    android:paddingBottom="10dp"
                     android:text=""
-                    android:enabled="false"
-                    android:textColor="@color/black"
-                    android:background="@null"
-                    android:textSize="14sp" />
+                    android:textSize="14sp">
 
-                <EditText
-                    android:id="@+id/taskDur"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Score: "
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp" />
+
+                    <EditText
+                        android:id="@+id/taskScore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:background="@null"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:layout_gravity="bottom"
                     android:layout_marginTop="5dp"
                     android:paddingStart="7dp"
                     android:paddingLeft="7dp"
-                    android:paddingTop="10dp"
                     android:paddingEnd="7dp"
                     android:paddingRight="7dp"
-                    android:paddingBottom="10dp"
-                    android:text="duration"
+                    android:text=""
                     android:visibility="gone"
-                    android:enabled="false"
-                    android:textColor="@color/black"
-                    android:background="@null"
-                    android:textSize="14sp" />
+                    android:textSize="14sp">
 
-                <EditText
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Dur: "
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp" />
+
+                    <EditText
+                        android:id="@+id/taskDur"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:background="@null"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <FrameLayout
                     android:id="@+id/taskCat"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
@@ -178,12 +204,18 @@
                     android:paddingEnd="7dp"
                     android:paddingRight="7dp"
                     android:paddingBottom="10dp"
-                    android:text="category"
-                    android:visibility="gone"
-                    android:enabled="false"
-                    android:textColor="@color/black"
-                    android:background="@null"
-                    android:textSize="14sp"/>
+                    android:visibility="gone" >
+
+                    <Spinner
+                        android:id="@+id/taskCatSP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="12"
+                        android:enabled="false"
+                        android:textColor="@color/black"
+                        android:background="@null"
+                        android:textSize="14sp" />
+                </FrameLayout>
 
                 <Button
                     android:id="@+id/taskEdit"

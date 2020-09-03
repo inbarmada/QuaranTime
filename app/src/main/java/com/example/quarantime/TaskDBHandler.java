@@ -137,11 +137,11 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         if (name != null) args.put(COLUMN_NAME, name);
         if (desc != null) args.put(COLUMN_DESC, desc);
         if (time != null) args.put(COLUMN_TIME, time);
-        args.put(COLUMN_DUR, duration);
+        if (duration > 0) args.put(COLUMN_DUR, duration);
         if (status != null) args.put(COLUMN_NAME, status);
         if (category != null) args.put(COLUMN_CATEGORY, category);
         args.put(COLUMN_REMIND, reminder);
-        args.put(COLUMN_SCORE, score);
+        if (score > 0) args.put(COLUMN_SCORE, score);
         return db.update(TABLE_NAME, args, COLUMN_ID + "=" + id, null) > 0;
     }
 

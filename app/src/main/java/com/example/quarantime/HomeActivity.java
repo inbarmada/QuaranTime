@@ -23,8 +23,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.quarantime.ui.dashboard.DashboardFragment;
@@ -123,8 +125,8 @@ public class HomeActivity extends AppCompatActivity {
 
         LinearLayout bottomTask = (LinearLayout)constlayout.getChildAt(2);
         LinearLayout bottomRight = (LinearLayout)bottomTask.getChildAt(1);
-        EditText durView = (EditText)bottomRight.getChildAt(1);
-        EditText catView = (EditText)bottomRight.getChildAt(2);
+        LinearLayout durView = (LinearLayout)bottomRight.getChildAt(1);
+        FrameLayout catView = (FrameLayout)bottomRight.getChildAt(2);
         Button editButton = (Button)bottomRight.getChildAt(3);
         Log.d("Notes: HomeActivity", "/" + expand_is_on.getText() + "/ msg");
         if (expand_is_on.getText().equals("")) {
@@ -144,18 +146,20 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void editTask(View view) {
-        ConstraintLayout constlayout = (ConstraintLayout)view.getParent().getParent().getParent();
+        ConstraintLayout constlayout = (ConstraintLayout)(view.getParent().getParent().getParent());
         LinearLayout taskTop = (LinearLayout)constlayout.getChildAt(1);
         LinearLayout titleHolder = (LinearLayout)taskTop.getChildAt(0);
         LinearLayout bottomTask = (LinearLayout)constlayout.getChildAt(2);
         LinearLayout bottomRight = (LinearLayout)bottomTask.getChildAt(1);
 
-        EditText titleView = (EditText) (titleHolder).getChildAt(1);
+        TextView taskID = (TextView)constlayout.getChildAt(0);
+
+        EditText titleView = (EditText)titleHolder.getChildAt(1);
         EditText dateView = (EditText)taskTop.getChildAt(1);
         EditText descView = (EditText)bottomTask.getChildAt(0);
-        EditText scoreView = (EditText)bottomRight.getChildAt(0);
-        EditText durView = (EditText)bottomRight.getChildAt(1);
-        EditText catView = (EditText)bottomRight.getChildAt(2);
+        EditText scoreView = (EditText)((LinearLayout)bottomRight.getChildAt(0)).getChildAt(1);
+        EditText durView = (EditText)((LinearLayout)bottomRight.getChildAt(1)).getChildAt(1);
+        Spinner catView = (Spinner)((FrameLayout)bottomRight.getChildAt(2)).getChildAt(0);
 
         Button editButton = (Button)bottomRight.getChildAt(3);
 
@@ -168,6 +172,13 @@ public class HomeActivity extends AppCompatActivity {
             catView.setEnabled(true);
             editButton.setText(R.string.done);
         } else {
+            int id = Integer.parseInt(taskID.getText() + "");
+            TaskDBHandler taskDB = new TaskDBHandler(this, null);
+            String title = titleView.getText() + "";
+            String desc = descView.getText() + "";
+            double duration = Double.parseDouble(durView.getText() + "");
+            int score = Integer.parseInt(scoreView.getText() + "");
+            taskDB.updateHandler(id, title, desc, null, duration, false, null, null, score);
             titleView.setEnabled(false);
             dateView.setEnabled(false);
             descView.setEnabled(false);
