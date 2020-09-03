@@ -142,6 +142,8 @@ public class HomeActivity extends AppCompatActivity {
             catView.setVisibility(View.GONE);
             editButton.setVisibility(View.GONE);
             expand_is_on.setText("");
+            editButton.setText(R.string.done);
+            editTask((View)editButton);
         }
     }
 

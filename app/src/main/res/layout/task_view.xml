@@ -93,8 +93,7 @@
             card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/taskTop"
-            card_view:layout_constraintVertical_bias="1.0"
-            android:layout_marginTop="5dp">
+            card_view:layout_constraintVertical_bias="1.0">
 
             <EditText
                 android:id="@+id/taskDesc"
