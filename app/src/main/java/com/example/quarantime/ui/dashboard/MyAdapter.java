@@ -3,6 +3,7 @@ package com.example.quarantime.ui.dashboard;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -97,9 +98,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.scoreView.setText(scr);
         String dur = mDataset[position].getDuration() + "";
         holder.durView.setText(dur);
-        String cat = "Cat: " + mDataset[position].getCategory();
-        holder.catView.setSelection(0);
-
+//        holder.catView.setSelection(0);
+        String category = mDataset[position].getCategory();
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(holder.card.getContext(), R.array.categories_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        holder.catView.setAdapter(adapter);
+        if (category != null) {
+            int spinnerPosition = adapter.getPosition(category);
+            Log.d("Notes: DashFragment", "Category " + category);
+            holder.catView.setSelection(spinnerPosition);
+        }
+        holder.catView.setEnabled(false);
         int drawable_color = R.drawable.solid_red_box;
         if (position % 4 == 0) {
             holder.card.setBackgroundResource(R.drawable.box_outline_blue);
