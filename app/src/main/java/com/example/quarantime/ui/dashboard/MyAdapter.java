@@ -99,7 +99,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.scoreView.setText(scr);
         String dur = mDataset[position].getDuration() + "";
         holder.durView.setText(dur);
-//        holder.catView.setSelection(0);
         String category = mDataset[position].getCategory();
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(holder.card.getContext(), R.array.categories_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

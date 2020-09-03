@@ -73,10 +73,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
         Log.d("Notes: taskdbhandler", "2");
         values.put(COLUMN_DESC, task.getDesc());
         Log.d("Notes: taskdbhandler", "3");
-        java.util.Date date = task.getTime();
-
-        java.sql.Date sqlDate = new Date(date.getTime());
-        values.put(COLUMN_TIME, String.valueOf(sqlDate));
+        values.put(COLUMN_TIME, task.getTimeStr());
         Log.d("Notes: taskdbhandler", "3.5");
         values.put(COLUMN_DUR, task.getDuration());
         Log.d("Notes: taskdbhandler", "4");

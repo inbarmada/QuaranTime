@@ -75,8 +75,6 @@ public class Task {
     public Date getTime() throws ParseException {
         if (time != null)
             return this.time;
-
-        // SimpleDateFormat d = new SimpleDateFormat("dd/mm/yyyy hh:mm:ss");
         SimpleDateFormat d = new SimpleDateFormat("dd/mm/yyyy", Locale.US);
         this.time = d.parse(timeStr);
         return time;

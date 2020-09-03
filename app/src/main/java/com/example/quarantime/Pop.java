@@ -53,12 +53,14 @@ public class Pop extends Activity {
         String name = ((EditText)findViewById(R.id.taskNameET)).getText().toString();
         String desc = ((EditText)findViewById(R.id.taskDescET)).getText().toString();
         String date = ((Button)findViewById(R.id.taskDateET)).getText().toString();
+        String parseDate =  date.substring(6) + "-" + date.substring(3,5) + "-" + date.substring(0,2);
         double duration = Double.parseDouble(((EditText)findViewById(R.id.taskDurET)).getText().toString());
         String cat = ((Spinner)findViewById(R.id.taskCatSP)).getSelectedItem().toString();
         boolean rem = ((CheckBox)findViewById(R.id.taskRemCB)).isChecked();
         int score = Integer.parseInt(((EditText)findViewById(R.id.taskScoreET)).getText().toString());
 
-        Task t = new Task(-1, name, desc, date, duration, rem, cat, score);
+
+        Task t = new Task(-1, name, desc, parseDate, duration, rem, cat, score);
 
         dbHandler.addHandler(t);
 
