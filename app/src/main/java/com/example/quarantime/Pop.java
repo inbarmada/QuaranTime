@@ -86,7 +86,6 @@ public class Pop extends Activity {
         }, day, month, year);
         dpd.getDatePicker().setMinDate(System.currentTimeMillis());
         dpd.show();
-
     }
 
 }

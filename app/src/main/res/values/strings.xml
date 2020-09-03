@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">QuaranTime</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Schedule</string>
+    <string name="title_dashboard">Todo List</string>
     <string name="title_notifications">Score</string>
     <string name="testNotification">Score</string>
     <string-array name="categories_array">

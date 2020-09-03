@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -31,6 +33,9 @@ import android.widget.TextView;
 
 import com.example.quarantime.ui.dashboard.DashboardFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.Calendar;
+import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity {
     @Override
@@ -157,7 +162,7 @@ public class HomeActivity extends AppCompatActivity {
         TextView taskID = (TextView)constlayout.getChildAt(0);
 
         EditText titleView = (EditText)titleHolder.getChildAt(1);
-        EditText dateView = (EditText)taskTop.getChildAt(1);
+        Button dateView = (Button)taskTop.getChildAt(1);
         EditText descView = (EditText)bottomTask.getChildAt(0);
         EditText scoreView = (EditText)((LinearLayout)bottomRight.getChildAt(0)).getChildAt(1);
         EditText durView = (EditText)((LinearLayout)bottomRight.getChildAt(1)).getChildAt(1);
@@ -180,7 +185,9 @@ public class HomeActivity extends AppCompatActivity {
             String desc = descView.getText() + "";
             double duration = Double.parseDouble(durView.getText() + "");
             int score = Integer.parseInt(scoreView.getText() + "");
-            taskDB.updateHandler(id, title, desc, null, duration, false, null, null, score);
+            String date = dateView.getText() + "";
+            String dateParser = date.substring(6) + "-" + date.substring(3,5) + "-" + date.substring(0,2);
+            taskDB.updateHandler(id, title, desc, dateParser, duration, false, null, null, score);
             titleView.setEnabled(false);
             dateView.setEnabled(false);
             descView.setEnabled(false);
@@ -189,5 +196,25 @@ public class HomeActivity extends AppCompatActivity {
             catView.setEnabled(false);
             editButton.setText(R.string.edit);
         }
+    }
+
+    public void showDatePickerDialog(View view) {
+        final Button date = (Button)view;
+        String cur_date = ((Button)view).getText() + "";
+        int day = Integer.parseInt(cur_date.substring(0,2));
+        int month = Integer.parseInt(cur_date.substring(3,5));
+        int year = Integer.parseInt(cur_date.substring(6));
+        DatePickerDialog dpd = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day){
+                String d = String.format(Locale.US, "%02d", day);
+                String m = String.format(Locale.US, "%02d", (month + 1));
+                String y = String.format(Locale.US, "%04d", year);
+                String dateString = d + "/" + m + "/" + y;
+                date.setText(dateString);
+            }
+        }, day, month, year);
+        dpd.getDatePicker().setMinDate(System.currentTimeMillis());
+        dpd.show();
     }
 }

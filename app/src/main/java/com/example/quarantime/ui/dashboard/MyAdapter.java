@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -31,7 +32,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         // each data item is just a string in this case
         public EditText descView;
         public TextView taskID;
-        public EditText dateView;
+        public Button dateView;
         public EditText scoreView;
         public EditText titleView;
         public EditText durView;
@@ -48,7 +49,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             titleHolder = (LinearLayout)taskTop.getChildAt(0);
             checkBox = (CheckBox)(titleHolder).getChildAt(0);
             titleView = (EditText) (titleHolder).getChildAt(1);
-            dateView = (EditText)taskTop.getChildAt(1);
+            dateView = (Button)taskTop.getChildAt(1);
             LinearLayout taskBottom = (LinearLayout)constlayout.getChildAt(2);
             descView = (EditText)taskBottom.getChildAt(0);
             LinearLayout bottomRight = (LinearLayout) taskBottom.getChildAt(1);
@@ -91,7 +92,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         String idText = mDataset[position].getID() + "";
         holder.taskID.setText(idText);
         holder.titleView.setText(mDataset[position].getName());
-        String timestr = "Due: " + mDataset[position].getTimeStr();
+        String timestr = mDataset[position].getDay() + "/" + mDataset[position].getMonth() + "/" + mDataset[position].getYear();
         holder.dateView.setText(timestr);
         holder.descView.setText(mDataset[position].getDesc());
         String scr = mDataset[position].getScore() + "";

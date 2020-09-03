@@ -84,6 +84,15 @@ public class Task {
     public String getTimeStr() {
         return timeStr;
     }
+    public String getYear() {
+        return timeStr.substring(0,4);
+    }
+    public String getMonth() {
+        return timeStr.substring(5,7);
+    }
+    public String getDay() {
+        return timeStr.substring(8);
+    }
     public double getDuration() {
         return this.duration;
     }
