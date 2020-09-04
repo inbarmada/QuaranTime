@@ -12,6 +12,7 @@
     <color name="black">#4B4B4B</color>
     <color name="red">#FF0000</color>
     <color name="softred">#ffcd99</color>
+    <color name="darkred">#DE7E12</color>
     <color name="green">#96f7a2</color>
     <color name="yellow">#ffd776</color>
 </resources>

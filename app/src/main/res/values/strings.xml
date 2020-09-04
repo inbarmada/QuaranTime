@@ -21,4 +21,7 @@
     <string name="score_label">Score: </string>
     <string name="done">DONE</string>
     <string name="edit">EDIT</string>
+    <string name="next_task">Next task:</string>
+    <string name="productivity_tip">Productivity Tip: </string>
+    <string name="recently_completed_tasks">Recently Completed Tasks:</string>
 </resources>
