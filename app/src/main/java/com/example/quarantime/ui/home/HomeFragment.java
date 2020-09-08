@@ -38,6 +38,7 @@ public class HomeFragment extends Fragment {
         setNextTask(root);
         setCompletedTasks(root);
         setQuote(root);
+        setProductivityTips(root);
         return root;
     }
 
@@ -91,6 +92,12 @@ public class HomeFragment extends Fragment {
 
         TextView author = (TextView) root.findViewById(R.id.quoteAuthor);
         author.setText(authors[number]);
+    }
+
+    public void setProductivityTips(View root) {
+        int number = (int) (Math.random() * productivityTips.length);
+        TextView tip = (TextView) root.findViewById(R.id.productivityTip);
+        tip.setText(productivityTips[number]);
     }
 
 
@@ -302,5 +309,28 @@ public class HomeFragment extends Fragment {
             "Audrey Hepburn",
             "Steve Jobs",
             "Zig Ziglar"
+    };
+
+    private String[] productivityTips = {
+            "Prioritize your tasks",
+            "Take regular breaks",
+            "Get a good night's sleep",
+            "Plan out your day",
+            "Change up your working environment",
+            "Finish old projects before starting new ones",
+            "Don't juggle too many things at once",
+            "Eat healthy and stay hydrated to remain energized throughout your day",
+            "Divide big tasks into smaller, more doable chunks",
+            "Taker joy in your work to stay motivated",
+            "Smile, hug someone, and stay positive",
+            "Drink tea to calm nerves",
+            "Don't overuse caffeinated drinks",
+            "Write down your to-do list (or keep it in this app!)",
+            "Have a growth mindset",
+            "Nourish your curiosity",
+            "Try snacking or listening to music while you work to make it more pleasant",
+            "Try starting with easier tasks to ease yourself into work",
+            "Put your phone away while working",
+            "Don't procrastinate"
     };
 }
