@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.quarantime.R;
+import com.example.quarantime.TaskDBHandler;
 
 public class HomeFragment extends Fragment {
 
@@ -31,6 +32,13 @@ public class HomeFragment extends Fragment {
                 textView.setText(welcome);
             }
         });
+        setNextTask(root);
         return root;
+    }
+
+    public void setNextTask(View root) {
+        TextView nextTask = (TextView) root.findViewById(R.id.nextTask);
+        TaskDBHandler taskDB = new TaskDBHandler(getContext(), null);
+        nextTask.setText(taskDB.getFirstTitle());
     }
 }

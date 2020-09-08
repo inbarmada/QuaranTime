@@ -19,7 +19,6 @@ import com.example.quarantime.TaskDBHandler;
 public class DashboardFragment extends Fragment {
 
     private DashboardViewModel dashboardViewModel;
-    // private RecyclerView.LayoutManager layoutManager;
     private View root;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

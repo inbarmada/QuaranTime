@@ -40,7 +40,7 @@ public class TaskDBHandler extends SQLiteOpenHelper {
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {}
-    public String loadHandler() {
+    public String getFirstTitle() {
         Log.d("Notes: taskdbhandler", "load handler");
 
         String result = "";
@@ -49,12 +49,9 @@ public class TaskDBHandler extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
+
         while (cursor.moveToNext()) {
-            int result_0 = cursor.getInt(0);
-            String result_1 = cursor.getString(1);
-            String result_2 = cursor.getString(2);
-            result += (result_0 + " " + result_1 + " " + result_2 +
-                    System.getProperty("line.separator"));
+            result = cursor.getString(1);
         }
         cursor.close();
         db.close();
