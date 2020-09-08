@@ -93,6 +93,8 @@ public class HomeActivity extends AppCompatActivity {
         Task t = taskDB.deleteHandler(Integer.parseInt(id.getText() + ""));
         // Add to score
         addScore(t.getScore());
+        // Write into completed tasks
+        taskComplete(t.getName());
         Log.d("Notes: HomeActivity", "creating fragment: ");
         DashboardFragment dashboard = new DashboardFragment();
         Log.d("Notes: HomeActivity", "drawing fragment: ");
@@ -101,6 +103,24 @@ public class HomeActivity extends AppCompatActivity {
         Log.d("Notes: HomeActivity", "done with fragment: ");
     }
 
+    public void taskComplete(String text) {
+        Log.d("Notes: HomeAc", "task complete");
+
+        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        String one = prefs.getString("completedOne", null);
+        String two = prefs.getString("completedTwo", null);
+
+        editor.putString("completedOne", text);
+        editor.putString("completedTwo", one);
+        editor.putString("completedThree", two);
+        editor.apply();
+        String tee = prefs.getString("completedOne", null);
+
+        Log.d("Notes: HomeAc", text);
+        Log.d("Notes: HomeAc", one + " --- " + two + "----" + tee);
+    }
 
     public int getScore() {
         int score = 0;
