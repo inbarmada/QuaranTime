@@ -16,9 +16,9 @@ public class MainActivity extends AppCompatActivity {
 
         //setContentView(R.layout.activity_main);
         Log.d("Notes: MainActivity", "set content view");
+        setContentView(R.layout.activity_main);
 
-        int SPLASH_TIME_OUT = 3000;
-
+        int SPLASH_TIME_OUT = 30000;
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run(){
